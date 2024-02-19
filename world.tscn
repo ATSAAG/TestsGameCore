@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dilkfbldiuood"]
+
+[ext_resource type="PackedScene" uid="uid://x6mfh4sbat8u" path="res://tile_map.tscn" id="2_hanmc"]
+[ext_resource type="PackedScene" uid="uid://b7gwtd5g80xmc" path="res://player.tscn" id="2_rcuel"]
+[ext_resource type="PackedScene" uid="uid://b1b82fa6tpp0j" path="res://WalkingEnemy.tscn" id="3_0fo6w"]
+[ext_resource type="Script" path="res://WalkingEnemy.cs" id="4_yjnhg"]
+
+[node name="World" type="Node2D"]
+position = Vector2(868, 288)
+scale = Vector2(1.5, 1.5)
+
+[node name="TileMap" parent="." instance=ExtResource("2_hanmc")]
+position = Vector2(-157.333, 68)
+
+[node name="Player" parent="." instance=ExtResource("2_rcuel")]
+position = Vector2(18, 44)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.666667, 0.666667)
+metadata/_edit_lock_ = true
+
+[node name="WalkingEnemy" parent="." instance=ExtResource("3_0fo6w")]
+position = Vector2(-135.361, 43.4139)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("4_yjnhg")
