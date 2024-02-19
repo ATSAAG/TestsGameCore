@@ -1,2 +1,2 @@
 # TestsGameCore
-This isn't the final repository
+This IS the final archi repository
