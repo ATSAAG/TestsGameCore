@@ -77,8 +77,7 @@ size = Vector2(14.955, 22)
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_haqf4"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/sync = true
-properties/0/watch = false
+properties/0/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.5, 1.5)
