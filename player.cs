@@ -17,78 +17,88 @@ public partial class player : CharacterBody2D
 	public override void _Ready()
 	{
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
+		//permet de differencier les joueurs
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
 		string animSpe = "normal";
-		
-		// Add the gravity, fast fall.
-		if (!IsOnFloor())
-			if (Input.IsActionJustPressed("down") && _canFastFall)
-			{
-				animSpe = "FastFall";
-				_canFastFall = false;
-			}
-			else
-			{
-				if (!_canFastFall)
+		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
+			Multiplayer.GetUniqueId())
+		{
+			//permet de gerer les animations des joueurs
+
+
+			Vector2 velocity = Velocity;
+			
+
+			// Add the gravity, fast fall.
+			if (!IsOnFloor())
+				if (Input.IsActionJustPressed("down") && _canFastFall)
 				{
 					animSpe = "FastFall";
-					velocity.Y += Gravity * (float)delta * 10;
+					_canFastFall = false;
 				}
 				else
 				{
-					velocity.Y += Gravity * (float)delta;
+					if (!_canFastFall)
+					{
+						animSpe = "FastFall";
+						velocity.Y += Gravity * (float)delta * 10;
+					}
+					else
+					{
+						velocity.Y += Gravity * (float)delta;
+					}
 				}
-			}
 
-		// Handle Jump and double jump.
-		if (IsOnFloor())
-		{
-			_canJump = 0.2f;
-			_canFastFall = true;
-			_canDoubleJump = false;
-		}
-		else
-		{
-			
-			if (Input.IsActionJustPressed("jump") && _canDoubleJump)
+			// Handle Jump and double jump.
+			if (IsOnFloor())
 			{
-				velocity.Y = JumpVelocity;
-				animSpe = "DoubleJump";
+				_canJump = 0.2f;
+				_canFastFall = true;
 				_canDoubleJump = false;
 			}
 			else
 			{
-				_canJump -= 0.05f;
-				_canDoubleJump = true;
+
+				if (Input.IsActionJustPressed("jump") && _canDoubleJump)
+				{
+					velocity.Y = JumpVelocity;
+					animSpe = "DoubleJump";
+					_canDoubleJump = false;
+				}
+				else
+				{
+					_canJump -= 0.05f;
+					_canDoubleJump = true;
+				}
 			}
-		}
-		
-		if (Input.IsActionJustPressed("jump") && _canJump > 0)
-			velocity.Y = JumpVelocity;
 
-		// Get the input direction and handle the movement/deceleration.
-		Vector2 direction = Input.GetVector("left", "right", "up", "down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
+			if (Input.IsActionJustPressed("jump") && _canJump > 0)
+				velocity.Y = JumpVelocity;
 
-		Velocity = velocity;
-		
-		// Handle animations.
-		
+			// Get the input direction and handle the movement/deceleration.
+			Vector2 direction = Input.GetVector("left", "right", "up", "down");
+			if (direction != Vector2.Zero)
+			{
+				velocity.X = direction.X * Speed;
+			}
+			else
+			{
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			}
+
+			Velocity = velocity;
+
+			// Handle animations.
+
+			
+
+			MoveAndSlide();
+		}
 		_HandleAnimations(Velocity, animSpe);
-		
-		MoveAndSlide();
-		
 	}
 	
 	// Handle animations.
@@ -146,5 +156,10 @@ public partial class player : CharacterBody2D
 		{
 			_animGoingTime--;
 		}
+	}
+
+	public void SetPlayerName(string name)
+	{
+		GetNode<Label>("Label").Text = name;
 	}
 }

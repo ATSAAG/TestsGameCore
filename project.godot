@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="TestMovements"
-run/main_scene="res://world.tscn"
+config/name="Test"
+run/main_scene="res://interface_utilisateur.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MultiplayerManagment="*res://MultiplayerManagment.cs"
 
 [dotnet]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b7gwtd5g80xmc"]
+[gd_scene load_steps=43 format=3 uid="uid://b7gwtd5g80xmc"]
 
 [ext_resource type="Script" path="res://player.cs" id="1_b85xb"]
 [ext_resource type="Texture2D" uid="uid://pdeejso2fh08" path="res://Assets usefull/Main Characters/Ninja Frog/Double Jump (32x32).png" id="2_nxn6t"]
@@ -268,7 +268,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arc8u"]
 size = Vector2(14.955, 22)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_haqf4"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_b85xb")
 
@@ -280,3 +285,14 @@ animation = &"DoubleJump"
 position = Vector2(0.509178, 4.91336)
 shape = SubResource("RectangleShape2D_arc8u")
 one_way_collision_margin = 0.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_haqf4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -13.0
+offset_top = -37.0
+offset_right = 25.0
+offset_bottom = -14.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
