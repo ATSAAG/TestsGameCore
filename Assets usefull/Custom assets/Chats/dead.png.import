@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p5dqtx366w67"
-path="res://.godot/imported/jump_face.png-9258893d1943d5d210b9e20d27187a44.ctex"
+uid="uid://br70wynce1ggy"
+path="res://.godot/imported/dead.png-2b12df9304eb1fd5d9dfe9a09b18def7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets usefull/Custom assets/jump_face.png"
-dest_files=["res://.godot/imported/jump_face.png-9258893d1943d5d210b9e20d27187a44.ctex"]
+source_file="res://Assets usefull/Custom assets/Chats/dead.png"
+dest_files=["res://.godot/imported/dead.png-2b12df9304eb1fd5d9dfe9a09b18def7.ctex"]
 
 [params]
 

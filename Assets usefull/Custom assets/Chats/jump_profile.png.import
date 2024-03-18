@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd6dq4pikbhoc"
-path="res://.godot/imported/roll_2.png-c9b96ee6426f1696ebec540a79427113.ctex"
+uid="uid://dav3m6ogqd0q5"
+path="res://.godot/imported/jump_profile.png-d7c1e373ed20a3b5cab4344902f4e3e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets usefull/Custom assets/roll_2.png"
-dest_files=["res://.godot/imported/roll_2.png-c9b96ee6426f1696ebec540a79427113.ctex"]
+source_file="res://Assets usefull/Custom assets/Chats/jump_profile.png"
+dest_files=["res://.godot/imported/jump_profile.png-d7c1e373ed20a3b5cab4344902f4e3e7.ctex"]
 
 [params]
 
