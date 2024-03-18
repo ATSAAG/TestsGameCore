@@ -3,12 +3,14 @@ using Godot;
 public partial class player : CharacterBody2D
 {
 	//Setup player attributes.
-	public const float Speed = 300.0f;
+	public const float BaseSpeed = 300.0f;
 	public const float JumpVelocity = -400.0f;
+	public float Speed = BaseSpeed;
 	private float _canJump;
 	private bool _canFastFall;
 	private bool _canDoubleJump;
-	public float _animGoingTime;
+	private bool _canDash;
+	private float _dashing;
 	private AnimatedSprite2D _sprite;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -23,16 +25,11 @@ public partial class player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		Vector2 velocity = Velocity;
 		string animSpe = "normal";
 		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
 			Multiplayer.GetUniqueId())
 		{
-			//permet de gerer les animations des joueurs
-
-
-			Vector2 velocity = Velocity;
-			
-
 			// Add the gravity, fast fall.
 			if (!IsOnFloor())
 				if (Input.IsActionJustPressed("down") && _canFastFall)
@@ -59,6 +56,7 @@ public partial class player : CharacterBody2D
 				_canJump = 0.2f;
 				_canFastFall = true;
 				_canDoubleJump = false;
+				_canDash = true;
 			}
 			else
 			{
@@ -66,18 +64,37 @@ public partial class player : CharacterBody2D
 				if (Input.IsActionJustPressed("jump") && _canDoubleJump)
 				{
 					velocity.Y = JumpVelocity;
-					animSpe = "DoubleJump";
 					_canDoubleJump = false;
 				}
 				else
 				{
 					_canJump -= 0.05f;
-					_canDoubleJump = true;
+				}
+			}
+			// Handle dash
+
+			if (Input.IsActionJustPressed("dash") && _canDash)
+			{
+				_dashing = 1f;
+				animSpe = "Dash";
+				_canDash = false;
+				Speed *= 7;
+			}
+			else
+			{
+				_dashing -= 0.05f;
+				if (Speed > BaseSpeed)
+				{
+					Speed -= 300;
 				}
 			}
 
 			if (Input.IsActionJustPressed("jump") && _canJump > 0)
+			{
 				velocity.Y = JumpVelocity;
+				_canDoubleJump = true;
+			}
+
 
 			// Get the input direction and handle the movement/deceleration.
 			Vector2 direction = Input.GetVector("left", "right", "up", "down");
@@ -87,20 +104,39 @@ public partial class player : CharacterBody2D
 			}
 			else
 			{
-				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+				if (_dashing > 0)
+				{
+					_sprite.Offset = direction;
+					if (!_sprite.FlipH)
+					{
+						velocity.X = Speed;
+					}
+					else
+					{
+						velocity.X = -Speed;
+					}
+				}
+				else
+				{
+					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+				}
 			}
 
 			Velocity = velocity;
 
 			// Handle animations.
+			if (_dashing > 0)
+			{
+				animSpe = "Dash";
+			}
 
-			
+			_HandleAnimations(Velocity, animSpe);
 
 			MoveAndSlide();
+
 		}
-		_HandleAnimations(Velocity, animSpe);
+		
 	}
-	
 	// Handle animations.
 	private void _HandleAnimations(Vector2 vitesse, string animSpe)
 	{
@@ -116,45 +152,36 @@ public partial class player : CharacterBody2D
 		}
 
 		// Handle basic animations
-		if (_animGoingTime == 0)
+		if (animSpe == "normal")
 		{
-
-			if (animSpe == "normal")
+			if (IsOnFloor())
 			{
-				if (IsOnFloor())
+				if (vitesse == Vector2.Zero)
 				{
-					if (vitesse == Vector2.Zero)
-					{
-						animSpe = "Idle";
-					}
-					else
-					{
-						animSpe = "Run";
-					}
+					animSpe = "Idle";
 				}
 				else
 				{
-					if (vitesse.Y > 0)
-					{
-						animSpe = "Fall";
-					}
-					else
-					{
-						animSpe = "Jump";
-					}
+					animSpe = "Run";
 				}
 			}
-
-			// Handle continuous animations.
-			if (animSpe != _sprite.Animation)
+			else
 			{
-				_sprite.Play(animSpe);
-
+				if (vitesse.Y > 0)
+				{
+					animSpe = "Fall";
+				}
+				else
+				{
+					animSpe = "Jump";
+				}
 			}
 		}
-		else
+
+		// Handle continuous animations.
+		if (animSpe != _sprite.Animation)
 		{
-			_animGoingTime--;
+			_sprite.Play(animSpe);
 		}
 	}
 
