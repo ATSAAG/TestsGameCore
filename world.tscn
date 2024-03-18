@@ -21,6 +21,7 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("4_yjnhg")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(616, -60)
 
 [node name="0" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
 position = Vector2(-2.66667, -68.6667)

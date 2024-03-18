@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://b7gwtd5g80xmc"]
 
 [ext_resource type="Script" path="res://player.cs" id="1_b85xb"]
-[ext_resource type="Texture2D" uid="uid://bv646hecqg7rs" path="res://Assets usefull/Custom assets/Chats/cat_dash1.png" id="2_yuagr"]
-[ext_resource type="Texture2D" uid="uid://d1k87jph7ps7s" path="res://Assets usefull/Custom assets/Chats/cat_doubleJump1.png" id="3_3p1oe"]
-[ext_resource type="Texture2D" uid="uid://de0k3gvis17bh" path="res://Assets usefull/Custom assets/Chats/cat_fall1.png" id="4_bosj7"]
-[ext_resource type="Texture2D" uid="uid://brnc825g07xhj" path="res://Assets usefull/Custom assets/Chats/cat_idle_profile1.png" id="5_xfm2p"]
-[ext_resource type="Texture2D" uid="uid://btd072g7c1pfq" path="res://Assets usefull/Custom assets/Chats/cat_jump_profile1.png" id="6_dgajs"]
-[ext_resource type="Texture2D" uid="uid://bq8qk62f6b0ia" path="res://Assets usefull/Custom assets/Chats/walk_1.png" id="7_dbopk"]
-[ext_resource type="Texture2D" uid="uid://0c5w0tc1ft0o" path="res://Assets usefull/Custom assets/Chats/walk_2.png" id="8_mpw3v"]
+[ext_resource type="Texture2D" uid="uid://mljh2v8hu5r5" path="res://Assets usefull/Custom assets/Chats/cat_dash1.png" id="2_yuagr"]
+[ext_resource type="Texture2D" uid="uid://cxrm1exl52udd" path="res://Assets usefull/Custom assets/Chats/cat_doubleJump1.png" id="3_3p1oe"]
+[ext_resource type="Texture2D" uid="uid://lw4om8ya1g8v" path="res://Assets usefull/Custom assets/Chats/cat_fall1.png" id="4_bosj7"]
+[ext_resource type="Texture2D" uid="uid://bq8o0yc53l47j" path="res://Assets usefull/Custom assets/Chats/cat_idle_profile1.png" id="5_xfm2p"]
+[ext_resource type="Texture2D" uid="uid://cboa32sf4ha17" path="res://Assets usefull/Custom assets/Chats/cat_jump_profile1.png" id="6_dgajs"]
+[ext_resource type="Texture2D" uid="uid://daxgvxysnky1q" path="res://Assets usefull/Custom assets/Chats/walk_1.png" id="7_dbopk"]
+[ext_resource type="Texture2D" uid="uid://bxw5edo4lac82" path="res://Assets usefull/Custom assets/Chats/walk_2.png" id="8_mpw3v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iktaj"]
 animations = [{
@@ -88,7 +88,8 @@ script = ExtResource("1_b85xb")
 position = Vector2(0, 4)
 scale = Vector2(0.0583568, 0.0528018)
 sprite_frames = SubResource("SpriteFrames_iktaj")
-animation = &"Run"
+animation = &"FastFall"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.509178, 4.91336)
