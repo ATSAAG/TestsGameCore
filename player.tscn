@@ -1,21 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7gwtd5g80xmc"]
+[gd_scene load_steps=12 format=3 uid="uid://b7gwtd5g80xmc"]
 
 [ext_resource type="Script" path="res://player.cs" id="1_b85xb"]
 [ext_resource type="Texture2D" path="res://Assets usefull/Custom assets/dash.png" id="2_nl4lp"]
-[ext_resource type="Texture2D" uid="uid://bqbji2d6it2vq" path="res://Assets usefull/Main Characters/Ninja Frog/Fall (32x32).png" id="2_pnp3r"]
-[ext_resource type="Texture2D" uid="uid://nm8rpuxkudpl" path="res://Assets usefull/Main Characters/Ninja Frog/FastFall (32x32).png" id="3_0wc20"]
+[ext_resource type="Texture2D" uid="uid://dcofa1epo7lrt" path="res://Assets usefull/Custom assets/Chats/double_jump.png" id="3_p467h"]
+[ext_resource type="Texture2D" uid="uid://bm1rpprnswvkb" path="res://Assets usefull/Custom assets/Chats/fall_profile.png" id="4_ts86h"]
 [ext_resource type="Texture2D" uid="uid://v0vvdww05yfk" path="res://Assets usefull/Custom assets/Chats/profile.png" id="5_5bhum"]
 [ext_resource type="Texture2D" uid="uid://dav3m6ogqd0q5" path="res://Assets usefull/Custom assets/Chats/jump_profile.png" id="6_g8yq3"]
 [ext_resource type="Texture2D" uid="uid://bq8qk62f6b0ia" path="res://Assets usefull/Custom assets/Chats/walk_1.png" id="7_dbopk"]
 [ext_resource type="Texture2D" uid="uid://0c5w0tc1ft0o" path="res://Assets usefull/Custom assets/Chats/walk_2.png" id="8_mpw3v"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_87vh6"]
-atlas = ExtResource("2_pnp3r")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhbwh"]
-atlas = ExtResource("3_0wc20")
-region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iktaj"]
 animations = [{
@@ -27,14 +19,17 @@ animations = [{
 "name": &"Dash",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p467h")
+}],
 "loop": true,
 "name": &"DoubleJump",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_87vh6")
+"texture": ExtResource("4_ts86h")
 }],
 "loop": true,
 "name": &"Fall",
@@ -42,7 +37,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jhbwh")
+"texture": ExtResource("4_ts86h")
 }],
 "loop": false,
 "name": &"FastFall",
@@ -90,9 +85,10 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_b85xb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.991272, 1)
+position = Vector2(0, 4)
+scale = Vector2(0.0583568, 0.0528018)
 sprite_frames = SubResource("SpriteFrames_iktaj")
-animation = &"Dash"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.509178, 4.91336)
