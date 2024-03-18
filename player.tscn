@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7gwtd5g80xmc"]
+[gd_scene load_steps=13 format=3 uid="uid://b7gwtd5g80xmc"]
 
 [ext_resource type="Script" path="res://player.cs" id="1_b85xb"]
 [ext_resource type="Texture2D" path="res://Assets usefull/Custom assets/dash.png" id="2_nl4lp"]
 [ext_resource type="Texture2D" uid="uid://dcofa1epo7lrt" path="res://Assets usefull/Custom assets/Chats/double_jump.png" id="3_p467h"]
+[ext_resource type="Texture2D" uid="uid://dfbskdbo74yub" path="res://Assets usefull/Custom assets/Chats/smallgun_shot.png" id="4_26c7y"]
 [ext_resource type="Texture2D" uid="uid://bm1rpprnswvkb" path="res://Assets usefull/Custom assets/Chats/fall_profile.png" id="4_ts86h"]
 [ext_resource type="Texture2D" uid="uid://v0vvdww05yfk" path="res://Assets usefull/Custom assets/Chats/profile.png" id="5_5bhum"]
 [ext_resource type="Texture2D" uid="uid://dav3m6ogqd0q5" path="res://Assets usefull/Custom assets/Chats/jump_profile.png" id="6_g8yq3"]
@@ -28,6 +29,9 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_26c7y")
+}, {
 "duration": 1.0,
 "texture": ExtResource("4_ts86h")
 }],
@@ -88,7 +92,7 @@ script = ExtResource("1_b85xb")
 position = Vector2(0, 4)
 scale = Vector2(0.0583568, 0.0528018)
 sprite_frames = SubResource("SpriteFrames_iktaj")
-animation = &"Idle"
+animation = &"Fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.509178, 4.91336)
