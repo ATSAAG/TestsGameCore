@@ -21,16 +21,16 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("4_yjnhg")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-position = Vector2(616, -60)
+position = Vector2(-18.6667, 26.6667)
 
 [node name="0" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
-position = Vector2(-2.66667, -68.6667)
+position = Vector2(281.333, -148.667)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerSpawn/0"]
-position = Vector2(0.666664, 2)
+position = Vector2(1.0252e-05, -1.33333)
 
 [node name="1" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
 position = Vector2(45.3333, 10.6667)
 
-[node name="Camera2D" type="Camera2D" parent="PlayerSpawn/1"]
-position = Vector2(5.33333, -1.33333)
+[node name="Camera2D2" type="Camera2D" parent="PlayerSpawn/1"]
+position = Vector2(-304, 9.3333)
