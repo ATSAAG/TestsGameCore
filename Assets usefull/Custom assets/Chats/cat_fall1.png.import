@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfbskdbo74yub"
-path="res://.godot/imported/smallgun_shot.png-ee8034d83bbde7142afec551b0056dfb.ctex"
+uid="uid://de0k3gvis17bh"
+path="res://.godot/imported/cat_fall1.png-e81cc8cb3647afc09ac2248230cc0e27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets usefull/Custom assets/Chats/smallgun_shot.png"
-dest_files=["res://.godot/imported/smallgun_shot.png-ee8034d83bbde7142afec551b0056dfb.ctex"]
+source_file="res://Assets usefull/Custom assets/Chats/cat_fall1.png"
+dest_files=["res://.godot/imported/cat_fall1.png-e81cc8cb3647afc09ac2248230cc0e27.ctex"]
 
 [params]
 
