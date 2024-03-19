@@ -13,18 +13,19 @@ script = ExtResource("1_7oqaf")
 playerScene = ExtResource("2_rcuel")
 
 [node name="TileMap" parent="." instance=ExtResource("2_hanmc")]
-position = Vector2(-157.333, 68)
+position = Vector2(-571.333, 148)
+scale = Vector2(0.25, 0.25)
 
 [node name="WalkingEnemy" parent="." instance=ExtResource("3_0fo6w")]
-position = Vector2(-135.361, 43.4139)
+position = Vector2(-549.333, 88)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("4_yjnhg")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-position = Vector2(-18.6667, 26.6667)
+position = Vector2(-206.667, 40)
 
 [node name="0" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
-position = Vector2(281.333, -148.667)
+position = Vector2(-245.333, 34.6667)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerSpawn/0"]
 position = Vector2(1.0252e-05, -1.33333)
