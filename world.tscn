@@ -17,7 +17,7 @@ position = Vector2(-571.333, 148)
 scale = Vector2(0.25, 0.25)
 
 [node name="WalkingEnemy" parent="." instance=ExtResource("3_0fo6w")]
-position = Vector2(-549.333, 88)
+position = Vector2(-545.333, 119.333)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("4_yjnhg")
 

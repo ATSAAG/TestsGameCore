@@ -107,11 +107,6 @@ public partial class player : CharacterBody2D
 				animSpe = "Aim";
 			}
 
-			if (Input.IsActionJustReleased("shoot"))
-			{
-				_isShooting--;
-			}
-
 
 			// Get the input direction and handle the movement/deceleration.
 			Vector2 direction = Input.GetVector("left", "right", "up", "down");
@@ -138,7 +133,18 @@ public partial class player : CharacterBody2D
 					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 				}
 			}
-			
+			if (Input.IsActionJustReleased("shoot"))
+			{
+				_isShooting--;
+				if (_sprite.FlipH)
+				{
+					velocity.X += 1000;
+				}
+				else
+				{
+					velocity.X += -1000;
+				}
+			}
 			
 			// Handle animations.
 			if (_dashing > 0)
@@ -146,22 +152,14 @@ public partial class player : CharacterBody2D
 				animSpe = "Dash";
 			}
 
-			if (_isShooting == 0)
+			if (_isShooting <= 0)
 			{
-				_isShooting = 50;
+				_isShooting = 10;
 			}
-			if (_isShooting != 50)
+			if (_isShooting != 10)
 			{
 				animSpe = "Shoot";
 				_isShooting--;
-				if (_sprite.FlipH)
-				{
-					velocity.X = 500;
-				}
-				else
-				{
-					velocity.X = -500;
-				}
 			}
 
 			Velocity = velocity;
@@ -175,14 +173,17 @@ public partial class player : CharacterBody2D
 	private void _HandleAnimations(Vector2 vitesse, string animSpe)
 	{
 		// Handle which direction the player is looking.
-		if (vitesse.X < 0)
+		if (animSpe != "Dash" && animSpe != "Shoot")
 		{
-			_sprite.FlipH = true;
-		}
+			if (vitesse.X < 0)
+			{
+				_sprite.FlipH = true;
+			}
 
-		if (vitesse.X > 0)
-		{
-			_sprite.FlipH = false;
+			if (vitesse.X > 0)
+			{
+				_sprite.FlipH = false;
+			}
 		}
 
 		// Handle basic animations
