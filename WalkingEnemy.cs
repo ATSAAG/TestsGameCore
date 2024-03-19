@@ -6,10 +6,12 @@ public partial class WalkingEnemy : CharacterBody2D
 	public float Speed = 100f;
 	private RayCast2D[] _rayCasts;
 	private AnimatedSprite2D _sprite;
+	private int feur;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
+		feur = 0;
 		_rayCasts = new RayCast2D[8];
 		_rayCasts[0] = GetNode<RayCast2D>("RayCast2D");
 		_rayCasts[1] = GetNode<RayCast2D>("RayCast2D2");
