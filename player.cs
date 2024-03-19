@@ -99,13 +99,6 @@ public partial class player : CharacterBody2D
 				velocity.Y = JumpVelocity;
 				_canDoubleJump = true;
 			}
-			
-			// Handle aim and shooting
-
-			if (Input.IsActionPressed("shoot"))
-			{
-				animSpe = "Aim";
-			}
 
 
 			// Get the input direction and handle the movement/deceleration.
@@ -133,7 +126,8 @@ public partial class player : CharacterBody2D
 					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 				}
 			}
-			if (Input.IsActionJustReleased("shoot"))
+			
+			if (Input.IsActionJustPressed("shoot"))
 			{
 				_isShooting--;
 				if (_sprite.FlipH)
