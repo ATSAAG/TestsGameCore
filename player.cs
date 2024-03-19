@@ -12,6 +12,7 @@ public partial class player : CharacterBody2D
 	private bool _canDoubleJump;
 	private bool _canDash;
 	private float _dashing;
+	private float _isShooting;
 	private AnimatedSprite2D _sprite;
 	private CollisionShape2D _collisionShape;
 
@@ -20,6 +21,7 @@ public partial class player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		_isShooting = 50;
 		_collisionShape =GetNode<CollisionShape2D>("CollisionShape2D");
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
@@ -97,6 +99,18 @@ public partial class player : CharacterBody2D
 				velocity.Y = JumpVelocity;
 				_canDoubleJump = true;
 			}
+			
+			// Handle aim and shooting
+
+			if (Input.IsActionPressed("shoot"))
+			{
+				animSpe = "Aim";
+			}
+
+			if (Input.IsActionJustReleased("shoot"))
+			{
+				_isShooting--;
+			}
 
 
 			// Get the input direction and handle the movement/deceleration.
@@ -124,20 +138,7 @@ public partial class player : CharacterBody2D
 					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 				}
 			}
-
-			Velocity = velocity;
 			
-			// Handle aim and shooting
-
-			if (Input.IsActionPressed("shoot"))
-			{
-				animSpe = "Aim";
-			}
-
-			if (Input.IsActionJustReleased("shoot") && animSpe == "Aim")
-			{
-				animSpe = "Shoot";
-			}
 			
 			// Handle animations.
 			if (_dashing > 0)
@@ -145,6 +146,25 @@ public partial class player : CharacterBody2D
 				animSpe = "Dash";
 			}
 
+			if (_isShooting == 0)
+			{
+				_isShooting = 50;
+			}
+			if (_isShooting != 50)
+			{
+				animSpe = "Shoot";
+				_isShooting--;
+				if (_sprite.FlipH)
+				{
+					velocity.X = 500;
+				}
+				else
+				{
+					velocity.X = -500;
+				}
+			}
+
+			Velocity = velocity;
 			_HandleAnimations(Velocity, animSpe);
 			MoveAndSlide();
 
