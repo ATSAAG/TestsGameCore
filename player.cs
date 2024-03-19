@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class player : CharacterBody2D
@@ -12,12 +13,14 @@ public partial class player : CharacterBody2D
 	private bool _canDash;
 	private float _dashing;
 	private AnimatedSprite2D _sprite;
+	private CollisionShape2D _collisionShape;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
+		_collisionShape =GetNode<CollisionShape2D>("CollisionShape2D");
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
 		//permet de differencier les joueurs
@@ -82,7 +85,7 @@ public partial class player : CharacterBody2D
 			}
 			else
 			{
-				_dashing -= 0.05f;
+				_dashing -= 0.1f;
 				if (Speed > BaseSpeed)
 				{
 					Speed -= 300;
@@ -123,7 +126,19 @@ public partial class player : CharacterBody2D
 			}
 
 			Velocity = velocity;
+			
+			// Handle aim and shooting
 
+			if (Input.IsActionPressed("shoot"))
+			{
+				animSpe = "Aim";
+			}
+
+			if (Input.IsActionJustReleased("shoot") && animSpe == "Aim")
+			{
+				animSpe = "Shoot";
+			}
+			
 			// Handle animations.
 			if (_dashing > 0)
 			{
@@ -131,7 +146,6 @@ public partial class player : CharacterBody2D
 			}
 
 			_HandleAnimations(Velocity, animSpe);
-
 			MoveAndSlide();
 
 		}
@@ -179,10 +193,7 @@ public partial class player : CharacterBody2D
 		}
 
 		// Handle continuous animations.
-		if (animSpe != _sprite.Animation)
-		{
-			_sprite.Play(animSpe);
-		}
+		_sprite.Play(animSpe);
 	}
 
 	public void SetPlayerName(string name)
