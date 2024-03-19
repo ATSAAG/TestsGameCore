@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using TestMovements;
 
 
 public partial class MultiplayerLobby : Control
@@ -34,10 +35,13 @@ public partial class MultiplayerLobby : Control
 
 			Multiplayer.MultiplayerPeer = peer;
 
-
 			GD.Print("Waiting for player");
+			GetNode<ServeurBrowser>("ServeurBrowser").SetUpBroadcast(GetNode<LineEdit>("LineEdit").Text + " serveur");
+
 		}
-	}
+
+		GetNode<ServeurBrowser>("ServeurBrowser").JoinGame += joinGame;
+	} 
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -109,14 +113,20 @@ public partial class MultiplayerLobby : Control
 
 
 		GD.Print("Waiting for player");
+		GetNode<ServeurBrowser>("ServeurBrowser").SetUpBroadcast(GetNode<LineEdit>("LineEdit").Text + " serveur");
 		SendPlayerInformation( GetNode<LineEdit>("LineEdit").Text,1);
 	}
 
 
 	private void _on_join_button_down()
 	{
+		joinGame(Adress);
+	}
+
+	private void joinGame(string ip)
+	{
 		peer = new ENetMultiplayerPeer();
-		peer.CreateClient(Adress, Port);
+		peer.CreateClient(ip, Port);
 		peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder); //optional compression to get less lag
 
 		Multiplayer.MultiplayerPeer = peer;
@@ -124,8 +134,9 @@ public partial class MultiplayerLobby : Control
 		GD.Print("Joining game");
 		//SendPlayerInformation("player 2",2);
 	}
-
-
+	
+	
+	
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	public void StartGame()
 	{
