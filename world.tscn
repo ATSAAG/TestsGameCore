@@ -27,11 +27,5 @@ position = Vector2(-206.667, 40)
 [node name="0" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
 position = Vector2(-288.667, 96.6667)
 
-[node name="Camera2D" type="Camera2D" parent="PlayerSpawn/0"]
-position = Vector2(3.8147e-06, 1.33334)
-
 [node name="1" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
 position = Vector2(-189.333, 79.3333)
-
-[node name="Camera2D2" type="Camera2D" parent="PlayerSpawn/1"]
-position = Vector2(1.33334, 1.33334)

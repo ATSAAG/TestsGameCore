@@ -130,13 +130,16 @@ public partial class player : CharacterBody2D
 			if (Input.IsActionJustPressed("shoot"))
 			{
 				_isShooting--;
-				if (_sprite.FlipH)
+				if (!IsOnFloor())
 				{
-					velocity.X += 1000;
-				}
-				else
-				{
-					velocity.X += -1000;
+					if (_sprite.FlipH)
+					{
+						velocity.X += 1500;
+					}
+					else
+					{
+						velocity.X += -1500;
+					}
 				}
 			}
 			
