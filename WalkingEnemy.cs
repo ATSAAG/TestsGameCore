@@ -1,7 +1,7 @@
 using Godot;
 using Vector2 = Godot.Vector2;
 
-public partial class WalkingEnemy : CharacterBody2D
+public abstract partial class WalkingEnemy : CharacterBody2D
 {
 	public float Speed = 100f;
 	private RayCast2D[] _rayCasts;

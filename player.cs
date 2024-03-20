@@ -73,9 +73,22 @@ public partial class player : CharacterBody2D
 				}
 				else
 				{
+					if (_canJump == 0.2f)
+					{
+						_canDoubleJump = true;
+					}
 					_canJump -= 0.05f;
 				}
 			}
+			// Handle wall jump and slide
+
+			if (IsOnWall() && !IsOnFloor())
+			{
+				animSpe = "WallSlide";
+				_canDash = true;
+				_canJump = 0.2f;
+			}
+			
 			// Handle dash
 
 			if (Input.IsActionJustPressed("dash") && _canDash)

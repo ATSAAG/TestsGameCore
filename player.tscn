@@ -1,41 +1,24 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7gwtd5g80xmc"]
+[gd_scene load_steps=13 format=3 uid="uid://b7gwtd5g80xmc"]
 
 [ext_resource type="Script" path="res://player.cs" id="1_b85xb"]
-[ext_resource type="Texture2D" uid="uid://gcumpiayvhje" path="res://Assets usefull/Custom assets/Chats/cat_shoot1.png" id="2_g4sph"]
 [ext_resource type="Texture2D" uid="uid://mljh2v8hu5r5" path="res://Assets usefull/Custom assets/Chats/cat_dash1.png" id="2_yuagr"]
-[ext_resource type="Texture2D" uid="uid://cxrm1exl52udd" path="res://Assets usefull/Custom assets/Chats/cat_doubleJump1.png" id="3_3p1oe"]
 [ext_resource type="Texture2D" uid="uid://lw4om8ya1g8v" path="res://Assets usefull/Custom assets/Chats/cat_fall1.png" id="4_bosj7"]
 [ext_resource type="Texture2D" uid="uid://bq8o0yc53l47j" path="res://Assets usefull/Custom assets/Chats/cat_idle_profile1.png" id="5_xfm2p"]
 [ext_resource type="Texture2D" uid="uid://cboa32sf4ha17" path="res://Assets usefull/Custom assets/Chats/cat_jump_profile1.png" id="6_dgajs"]
 [ext_resource type="Texture2D" uid="uid://daxgvxysnky1q" path="res://Assets usefull/Custom assets/Chats/walk_1.png" id="7_dbopk"]
 [ext_resource type="Texture2D" uid="uid://bxw5edo4lac82" path="res://Assets usefull/Custom assets/Chats/walk_2.png" id="8_mpw3v"]
 [ext_resource type="Shape2D" uid="uid://dyceucvyyajqd" path="res://Assets usefull/cShapes/cat_standing.tres" id="9_fdgi2"]
+[ext_resource type="Texture2D" uid="uid://k2s7dtqw6a8e" path="res://Assets usefull/Custom assets/Chats/wall_slide.png" id="9_kj2ws"]
 [ext_resource type="Texture2D" uid="uid://cjilbu28sple2" path="res://Assets usefull/Custom assets/Chats/cat_shoot2.png" id="10_phr6u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iktaj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_g4sph")
-}],
-"loop": true,
-"name": &"Aim",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("2_yuagr")
 }],
 "loop": true,
 "name": &"Dash",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_3p1oe")
-}],
-"loop": true,
-"name": &"DoubleJump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -87,6 +70,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_kj2ws")
+}],
+"loop": true,
+"name": &"WallSlide",
 "speed": 5.0
 }]
 
