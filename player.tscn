@@ -94,13 +94,14 @@ properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.5, 1.5)
+collision_layer = 3
 script = ExtResource("1_b85xb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
 scale = Vector2(0.0583568, 0.0528018)
 sprite_frames = SubResource("SpriteFrames_iktaj")
-animation = &"Idle"
+animation = &"WallSlide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.76837e-07, 4.83333)

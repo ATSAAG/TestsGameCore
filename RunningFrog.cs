@@ -1,17 +1,11 @@
 using Godot;
-using Vector2 = Godot.Vector2;
+using System;
 
-public abstract partial class WalkingEnemy : CharacterBody2D
+public partial class RunningFrog : GroundedEnemy
 {
-	public float Speed = 100f;
-	private RayCast2D[] _rayCasts;
-	private AnimatedSprite2D _sprite;
-
-	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
 	public override void _Ready()
 	{
-	
+		Speed = 100.0f;
 		_rayCasts = new RayCast2D[8];
 		_rayCasts[0] = GetNode<RayCast2D>("RayCast2D");
 		_rayCasts[1] = GetNode<RayCast2D>("RayCast2D2");
@@ -22,25 +16,17 @@ public abstract partial class WalkingEnemy : CharacterBody2D
 		_rayCasts[6] = GetNode<RayCast2D>("RayCast2D7");
 		_rayCasts[7] = GetNode<RayCast2D>("RayCast2D8");
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		isAttacking = false;
 	}
 	
-	public override void _PhysicsProcess(double delta)
+	public override Godot.Vector2 Move()
 	{
-		// Add constant speed
 		Vector2 velocity = Velocity;
-
-		// Add the gravity
-		if (!IsOnFloor())
-			velocity.Y += Gravity * (float)delta;
-
 		velocity.X = Speed;
-		
-		CheckRaycasts();
-		HandleAnimations();
-		Velocity = velocity;
-		MoveAndSlide();
+
+		return velocity;
 	}
-	public void CheckRaycasts()
+	public override void CheckRaycasts()
 	{
 		int i = 0;
 		if (Speed > 0)
@@ -68,7 +54,7 @@ public abstract partial class WalkingEnemy : CharacterBody2D
 		}
 	}
 
-	public void HandleAnimations()
+	public override void HandleAnimations()
 	{
 		_sprite.FlipH = Speed < 0;
 		_sprite.Play("Run");
