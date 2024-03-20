@@ -9,7 +9,7 @@ public partial class ServeurBrowser : Control
 
 
 	[Export] 
-	private PacketPeerUdp _broadcaster = new PacketPeerUdp();
+	private PacketPeerUdp _broadcaster;
 	[Export]
 	private PacketPeerUdp _listener = new PacketPeerUdp();
 
@@ -35,6 +35,7 @@ public partial class ServeurBrowser : Control
 
 	public void SetUpBroadcast(string name)
 	{
+		_broadcaster = new PacketPeerUdp();
 		_serveurInformation = new ServeurInformation()
 		{
 			Name = name,
@@ -82,8 +83,7 @@ public partial class ServeurBrowser : Control
 			
 			GD.Print("serveur IP : " + serveurIp + "serveur port : " + serveurPort +  "serveur information" + serveurPacket.GetStringFromUtf8());
 
-			Node CurNode = GetNode<VBoxContainer>("Panel/VBoxContainer").GetChildren()
-				.Where(x => x.Name == information.Name).FirstOrDefault();
+			Node CurNode = GetNode<VBoxContainer>("Panel/VBoxContainer").GetChildren().Where(x => x.Name == information.Name).FirstOrDefault();
 
 			if (CurNode != null) 
 			{
@@ -95,14 +95,14 @@ public partial class ServeurBrowser : Control
 			}
 			
 			
-			Control serveurInformation = ServeurInformation.Instantiate<Control>();
+			ServeurBrowserInfo serveurInformation = ServeurInformation.Instantiate<ServeurBrowserInfo>();
 			serveurInformation.Name = information.Name;
 			serveurInformation.GetNode<Label>("Name").Text = serveurInformation.Name;
 			serveurInformation.GetNode<Label>("IP").Text = serveurIp;
 			serveurInformation.GetNode<Label>("PlayerConnected").Text = information.NumberOfPlayer.ToString();
 			GetNode<VBoxContainer>("Panel/VBoxContainer").AddChild(serveurInformation);
 
-			//serveurInformation.JoinGame += _on_join_game;
+			serveurInformation.JoinGame += _on_join_game;
 			serveurInformation.GetNode<Button>("VJoinServeur").Text += _on_join_game;
 		}
 	}
@@ -116,10 +116,20 @@ public partial class ServeurBrowser : Control
 	{
 		GD.Print("Broadcasting Game");
 		_serveurInformation.NumberOfPlayer = MultiplayerManagment.Players.Count;
-		//update the number of plater connected
+		//update the number of player connected
 
 		string json = JsonSerializer.Serialize(_serveurInformation);
 		var packet = json.ToUtf8Buffer();
 		_broadcaster.PutPacket(packet);
+	}
+
+	public void Clean()
+	{
+		_listener.Close();
+		_broadcastTimer.Stop();
+		if (_broadcaster != null)
+		{
+			_broadcaster.Close();
+		}
 	}
 }

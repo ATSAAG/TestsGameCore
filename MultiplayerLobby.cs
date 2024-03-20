@@ -140,6 +140,7 @@ public partial class MultiplayerLobby : Control
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	public void StartGame()
 	{
+		GetNode<ServeurBrowser>("ServeurBrowser").Clean();
 		foreach (var i in MultiplayerManagment.Players)
 		{
 			GD.Print(i.Name + " is playing");

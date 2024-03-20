@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using System;
 using TestMovements;
 
@@ -17,11 +17,16 @@ public partial class ServeurBrowserInfo : HBoxContainer
 	public override void _Process(double delta)
 	{
 	}
+
+	
 	private void _on_join_serveur_button_down()
-	{
+	{GD.Print("aaaaaaaa");
 		EmitSignal(SignalName.JoinGame, GetNode<Label>("IP").Text);
 	}
+
 }
+
+
 
 
 
