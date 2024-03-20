@@ -101,10 +101,10 @@ script = ExtResource("1_b85xb")
 position = Vector2(0, 4)
 scale = Vector2(0.0583568, 0.0528018)
 sprite_frames = SubResource("SpriteFrames_iktaj")
-animation = &"WallSlide"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.76837e-07, 4.83333)
+position = Vector2(1.07208, 4.83333)
 shape = ExtResource("9_fdgi2")
 one_way_collision_margin = 0.0
 

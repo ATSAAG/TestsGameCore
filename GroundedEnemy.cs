@@ -11,14 +11,11 @@ public abstract partial class GroundedEnemy : CharacterBody2D
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		// Add constant speed
-		Vector2 velocity = Velocity;
 
+		Godot.Vector2 velocity = Move();
 		// Add the gravity
 		if (!IsOnFloor())
 			velocity.Y += Gravity * (float)delta;
-		
-		velocity = Move();
 		CheckRaycasts();
 		HandleAnimations();
 		Velocity = velocity;

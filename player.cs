@@ -82,7 +82,7 @@ public partial class player : CharacterBody2D
 			}
 			// Handle wall jump and slide
 
-			if (IsOnWall() && !IsOnFloor())
+			if (IsOnWall() && !IsOnFloor() && (Input.IsActionPressed("right") || Input.IsActionPressed("left")))
 			{
 				animSpe = "WallSlide";
 				_canDash = true;
@@ -143,8 +143,6 @@ public partial class player : CharacterBody2D
 			if (Input.IsActionJustPressed("shoot"))
 			{
 				_isShooting--;
-				if (!IsOnFloor())
-				{
 					if (_sprite.FlipH)
 					{
 						velocity.X += 1500;
@@ -153,7 +151,6 @@ public partial class player : CharacterBody2D
 					{
 						velocity.X += -1500;
 					}
-				}
 			}
 			
 			// Handle animations.

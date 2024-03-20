@@ -17,15 +17,15 @@ position = Vector2(-571.333, 148)
 scale = Vector2(0.25, 0.25)
 
 [node name="SniperFrog" parent="." instance=ExtResource("4_kngdy")]
-position = Vector2(-118, 103.333)
+position = Vector2(2565.33, -474)
 scale = Vector2(0.1, 0.1)
 
 [node name="RunningFrog" parent="." instance=ExtResource("5_dt51x")]
-position = Vector2(-353.333, 131.333)
+position = Vector2(1279.33, 90)
 scale = Vector2(0.1, 0.1)
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-position = Vector2(-206.667, 40)
+position = Vector2(2996.67, -167.333)
 
 [node name="0" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
 position = Vector2(-288.667, 96.6667)
