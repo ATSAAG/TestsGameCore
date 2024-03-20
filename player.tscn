@@ -94,6 +94,12 @@ animations = [{
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimatedSprite2D:flip_h")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.5, 1.5)
@@ -104,7 +110,6 @@ position = Vector2(0, 4)
 scale = Vector2(0.0583568, 0.0528018)
 sprite_frames = SubResource("SpriteFrames_iktaj")
 animation = &"Idle"
-autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.76837e-07, 4.83333)
