@@ -103,7 +103,9 @@ public partial class ServeurBrowser : Control
 			GetNode<VBoxContainer>("Panel/VBoxContainer").AddChild(serveurInformation);
 
 			serveurInformation.JoinGame += _on_join_game;
+#pragma warning disable CS8974 // Converting method group to non-delegate type
 			serveurInformation.GetNode<Button>("VJoinServeur").Text += _on_join_game;
+#pragma warning restore CS8974 // Converting method group to non-delegate type
 		}
 	}
 
