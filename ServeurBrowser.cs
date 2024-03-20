@@ -16,7 +16,7 @@ public partial class ServeurBrowser : Control
 	[Export] private int _listenPort = 8911;
 	[Export] private int _hostPort = 8912;
 
-	[Export] private string _broadcastAddress = "255.168.1.255";
+	[Export] private string _broadcastAddress = "192.168.1.255";
 	[Export]
 	private PackedScene ServeurInformation;
 	
