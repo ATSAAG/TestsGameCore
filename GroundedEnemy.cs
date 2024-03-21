@@ -3,6 +3,7 @@ using Vector2 = Godot.Vector2;
 
 public abstract partial class GroundedEnemy : CharacterBody2D
 {
+	public float Health;
 	protected float Speed;
 	protected RayCast2D[] _rayCasts;
 	protected AnimatedSprite2D _sprite;
@@ -26,4 +27,13 @@ public abstract partial class GroundedEnemy : CharacterBody2D
 	public abstract void CheckRaycasts();
 
 	public abstract void HandleAnimations();
+
+	public void Hit(float damage)
+	{
+		Health -= damage;
+		if (Health <= 0)
+		{
+			QueueFree();
+		}
+	}
 }

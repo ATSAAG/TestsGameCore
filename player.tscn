@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7gwtd5g80xmc"]
+[gd_scene load_steps=15 format=3 uid="uid://b7gwtd5g80xmc"]
 
 [ext_resource type="Script" path="res://player.cs" id="1_b85xb"]
 [ext_resource type="Texture2D" uid="uid://mljh2v8hu5r5" path="res://Assets usefull/Custom assets/Chats/cat_dash1.png" id="2_yuagr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shape2D" uid="uid://dyceucvyyajqd" path="res://Assets usefull/cShapes/cat_standing.tres" id="9_fdgi2"]
 [ext_resource type="Texture2D" uid="uid://k2s7dtqw6a8e" path="res://Assets usefull/Custom assets/Chats/wall_slide.png" id="9_kj2ws"]
 [ext_resource type="Texture2D" uid="uid://cjilbu28sple2" path="res://Assets usefull/Custom assets/Chats/cat_shoot2.png" id="10_phr6u"]
+[ext_resource type="Script" path="res://Gun.cs" id="11_qbko6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iktaj"]
 animations = [{
@@ -92,6 +93,9 @@ properties/2/path = NodePath("AnimatedSprite2D:flip_h")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1rqg"]
+size = Vector2(42.6667, 18.6667)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 3
@@ -101,7 +105,7 @@ script = ExtResource("1_b85xb")
 position = Vector2(0, 4)
 scale = Vector2(0.0583568, 0.0528018)
 sprite_frames = SubResource("SpriteFrames_iktaj")
-animation = &"Idle"
+animation = &"Shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.07208, 4.83333)
@@ -118,3 +122,12 @@ offset_right = 25.0
 offset_bottom = -14.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Gun" type="Area2D" parent="."]
+script = ExtResource("11_qbko6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun"]
+position = Vector2(29.3333, 4.66667)
+shape = SubResource("RectangleShape2D_b1rqg")
+
+[connection signal="body_entered" from="Gun" to="Gun" method="_on_body_entered"]

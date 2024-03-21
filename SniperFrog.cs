@@ -13,6 +13,7 @@ public partial class SniperFrog : GroundedEnemy
 		_rayCasts = new RayCast2D[1];
 		_rayCasts[0] = GetNode<RayCast2D>("RayCast2D");
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		Health = 10;
 	}
 
 	public override Vector2 Move()

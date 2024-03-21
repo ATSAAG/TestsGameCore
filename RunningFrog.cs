@@ -17,6 +17,7 @@ public partial class RunningFrog : GroundedEnemy
 		_rayCasts[7] = GetNode<RayCast2D>("RayCast2D8");
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		isAttacking = false;
+		Health = 10;
 	}
 	
 	public override Godot.Vector2 Move()
