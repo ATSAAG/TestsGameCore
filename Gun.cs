@@ -15,6 +15,7 @@ public partial class Gun : Area2D
 	}
 	private void _on_body_entered(object body)
 	{
+		GD.Print("feur");
 		GD.Print(body + "has entered");
 	}
 }

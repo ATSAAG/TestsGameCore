@@ -21,7 +21,7 @@ public partial class player : CharacterBody2D
 
 	public override void _Ready()
 	{
-		_isShooting = 50;
+		_isShooting = 10;
 		_collisionShape =GetNode<CollisionShape2D>("CollisionShape2D");
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));

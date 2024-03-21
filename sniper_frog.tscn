@@ -32,7 +32,7 @@ script = ExtResource("1_hr0js")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(76, -86)
 sprite_frames = SubResource("SpriteFrames_6phe4")
-animation = &"Aim"
+animation = &"Shoot"
 autoplay = "Aim"
 flip_h = true
 
