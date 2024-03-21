@@ -137,7 +137,7 @@ text = "Tuto multi local
 1)Le premier joueur rentre son pseudo + host
 2) Le deuxieme joueur rentre son pseudo + join
 3) Le premier joueur appuie sur start
-4) Se placer sur l'écran du deuxieme joueur
+4) Se placer sur l'écran du premier joueur (host)
 5) jouer"
 autowrap_mode = 2
 
