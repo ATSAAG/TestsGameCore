@@ -6,6 +6,7 @@ public partial class player : CharacterBody2D
 	//Setup player attributes.
 	public const float BaseSpeed = 300.0f;
 	public const float JumpVelocity = -400.0f;
+	public float Health;
 	public float Speed = BaseSpeed;
 	private float _canJump;
 	private bool _canFastFall;
@@ -15,13 +16,21 @@ public partial class player : CharacterBody2D
 	private float _isShooting;
 	private AnimatedSprite2D _sprite;
 	private CollisionShape2D _collisionShape;
+	private Area2D gunRight;
+	private Area2D gunLeft;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
+		
+		gunRight = GetNode<Area2D>("GunRight");
+		gunRight.Monitoring = false;
+		gunLeft = GetNode<Area2D>("GunLeft");
+		gunLeft.Monitoring = false;
 		_isShooting = 10;
+		Health = 10;
 		_collisionShape =GetNode<CollisionShape2D>("CollisionShape2D");
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
@@ -146,10 +155,12 @@ public partial class player : CharacterBody2D
 					if (_sprite.FlipH)
 					{
 						velocity.X += 1500;
+						gunLeft.Monitoring = true;
 					}
 					else
 					{
 						velocity.X += -1500;
+						gunRight.Monitoring = true;
 					}
 			}
 			
@@ -158,10 +169,12 @@ public partial class player : CharacterBody2D
 			{
 				animSpe = "Dash";
 			}
-
+			
 			if (_isShooting <= 0)
 			{
 				_isShooting = 10;
+				gunRight.Monitoring = false;
+				gunLeft.Monitoring = false;
 			}
 			if (_isShooting != 10)
 			{
@@ -221,11 +234,45 @@ public partial class player : CharacterBody2D
 		}
 
 		// Handle continuous animations.
-		_sprite.Play(animSpe);
+		if (Health == 10)
+		{
+			_sprite.Play(animSpe);
+		}
+		else
+		{
+			Health++;
+			_sprite.Play("Hit");
+		}
 	}
 
 	public void SetPlayerName(string name)
 	{
 		GetNode<Label>("Label").Text = name;
+	}
+	
+	private void _on_gun_body_entered(Node2D body)
+	{
+		if ((body.Name == "RunningFrog" || body.Name == "SniperFrog"))
+		{
+			((GroundedEnemy)body).Hit(5);
+		}
+	}
+
+	public void TakeHit(float damage)
+	{
+		Vector2 velocity = Velocity;
+		if (Velocity.X > 0)
+		{
+			velocity.X = 2500;
+			Health -= damage;
+		}
+		else
+		{
+			velocity.X = -2500;
+			Health -= damage;
+		}
+
+		Velocity = velocity;
+		MoveAndSlide();
 	}
 }

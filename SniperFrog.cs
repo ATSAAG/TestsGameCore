@@ -25,6 +25,8 @@ public partial class SniperFrog : GroundedEnemy
 	{
 		if (_rayCasts[0].IsColliding())
 		{
+			player body = (player) _rayCasts[0].GetCollider();
+			body.TakeHit(5);
 			isAttacking = true;
 		}
 	}

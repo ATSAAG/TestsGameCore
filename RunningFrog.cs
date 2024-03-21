@@ -60,4 +60,13 @@ public partial class RunningFrog : GroundedEnemy
 		_sprite.FlipH = Speed < 0;
 		_sprite.Play("Run");
 	}
+	
+	private void _on_hitboxe_body_entered(Node2D body)
+	{
+		if (body is CharacterBody2D)
+		{
+			((player)body).TakeHit(5);
+		}
+	}
 }
+
