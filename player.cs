@@ -46,21 +46,44 @@ public partial class player : CharacterBody2D
 		{
 			// Add the gravity, fast fall.
 			if (!IsOnFloor())
-				if (Input.IsActionJustPressed("down") && _canFastFall)
+				if (Name == "1")
 				{
-					animSpe = "FastFall";
-					_canFastFall = false;
-				}
-				else
-				{
-					if (!_canFastFall)
+					if (Input.IsActionJustPressed("Joycon_down") && _canFastFall)
 					{
 						animSpe = "FastFall";
-						velocity.Y += Gravity * (float)delta * 10;
+						_canFastFall = false;
 					}
 					else
 					{
-						velocity.Y += Gravity * (float)delta;
+						if (!_canFastFall)
+						{
+							animSpe = "FastFall";
+							velocity.Y += Gravity * (float)delta * 10;
+						}
+						else
+						{
+							velocity.Y += Gravity * (float)delta;
+						}
+					}
+				}
+				else
+				{
+					if (Input.IsActionJustPressed("down") && _canFastFall)
+					{
+						animSpe = "FastFall";
+						_canFastFall = false;
+					}
+					else
+					{
+						if (!_canFastFall)
+						{
+							animSpe = "FastFall";
+							velocity.Y += Gravity * (float)delta * 10;
+						}
+						else
+						{
+							velocity.Y += Gravity * (float)delta;
+						}
 					}
 				}
 
@@ -74,24 +97,42 @@ public partial class player : CharacterBody2D
 			}
 			else
 			{
-
-				if (Input.IsActionJustPressed("jump") && _canDoubleJump)
+				if (Name == "1")
 				{
-					velocity.Y = JumpVelocity;
-					_canDoubleJump = false;
+					if (Input.IsActionJustPressed("Joycon_jump") && _canDoubleJump)
+					{
+						velocity.Y = JumpVelocity;
+						_canDoubleJump = false;
+					}
+					else
+					{
+						if (_canJump == 0.2f)
+						{
+							_canDoubleJump = true;
+						}
+						_canJump -= 0.05f;
+					}
 				}
 				else
 				{
-					if (_canJump == 0.2f)
+					if (Input.IsActionJustPressed("jump") && _canDoubleJump)
 					{
-						_canDoubleJump = true;
+						velocity.Y = JumpVelocity;
+						_canDoubleJump = false;
 					}
-					_canJump -= 0.05f;
+					else
+					{
+						if (_canJump == 0.2f)
+						{
+							_canDoubleJump = true;
+						}
+						_canJump -= 0.05f;
+					}
 				}
 			}
 			// Handle wall jump and slide
 
-			if (IsOnWall() && !IsOnFloor() && (Input.IsActionPressed("right") || Input.IsActionPressed("left")))
+			if (IsOnWall() && !IsOnFloor() && (Input.IsActionPressed("right") || Input.IsActionPressed("left") || Input.IsActionPressed("Joycon_right") || Input.IsActionPressed("Joycon_left")))
 			{
 				animSpe = "WallSlide";
 				_canDash = true;
@@ -100,56 +141,118 @@ public partial class player : CharacterBody2D
 			
 			// Handle dash
 
-			if (Input.IsActionJustPressed("dash") && _canDash)
+			if (Name != "1")
 			{
-				_dashing = 1f;
-				animSpe = "Dash";
-				_canDash = false;
-				Speed *= 7;
+				if (Input.IsActionJustPressed("dash") && _canDash)
+				{
+					_dashing = 1f;
+					animSpe = "Dash";
+					_canDash = false;
+					Speed *= 7;
+				}
+				else
+				{
+					_dashing -= 0.1f;
+					if (Speed > BaseSpeed)
+					{
+						Speed -= 300;
+					}
+				}
 			}
 			else
 			{
-				_dashing -= 0.1f;
-				if (Speed > BaseSpeed)
+				if (Input.IsActionJustPressed("Joycon_dash") && _canDash)
 				{
-					Speed -= 300;
+					_dashing = 1f;
+					animSpe = "Dash";
+					_canDash = false;
+					Speed *= 7;
+				}
+				else
+				{
+					_dashing -= 0.1f;
+					if (Speed > BaseSpeed)
+					{
+						Speed -= 300;
+					}
 				}
 			}
 
-			if (Input.IsActionJustPressed("jump") && _canJump > 0)
+			if (Name != "1")
 			{
-				velocity.Y = JumpVelocity;
-				_canDoubleJump = true;
+				if (Input.IsActionJustPressed("jump") && _canJump > 0)
+				{
+					velocity.Y = JumpVelocity;
+					_canDoubleJump = true;
+				}
+			}
+			else
+			{
+				if (Input.IsActionJustPressed("Joycon_jump") && _canJump > 0)
+				{
+					velocity.Y = JumpVelocity;
+					_canDoubleJump = true;
+				}
 			}
 
 
 			// Get the input direction and handle the movement/deceleration.
-			Vector2 direction = Input.GetVector("left", "right", "up", "down");
-			if (direction != Vector2.Zero)
+			if (Name != "1")
 			{
-				velocity.X = direction.X * Speed;
-			}
-			else
-			{
-				if (_dashing > 0)
+				Vector2 direction = Input.GetVector("left", "right", "up", "down");
+				if (direction != Vector2.Zero)
 				{
-					_sprite.Offset = direction;
-					if (!_sprite.FlipH)
-					{
-						velocity.X = Speed;
-					}
-					else
-					{
-						velocity.X = -Speed;
-					}
+					velocity.X = direction.X * Speed;
 				}
 				else
 				{
-					velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+					if (_dashing > 0)
+					{
+						_sprite.Offset = direction;
+						if (!_sprite.FlipH)
+						{
+							velocity.X = Speed;
+						}
+						else
+						{
+							velocity.X = -Speed;
+						}
+					}
+					else
+					{
+						velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+					}
+				}
+			}
+			else
+			{
+				Vector2 direction = Input.GetVector("Joycon_left", "Joycon_right", "Joycon_up", "Joycon_down");
+				if (direction != Vector2.Zero)
+				{
+					velocity.X = direction.X * Speed;
+				}
+				else
+				{
+					if (_dashing > 0)
+					{
+						_sprite.Offset = direction;
+						if (!_sprite.FlipH)
+						{
+							velocity.X = Speed;
+						}
+						else
+						{
+							velocity.X = -Speed;
+						}
+					}
+					else
+					{
+						velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+					}
 				}
 			}
 			
-			if (Input.IsActionJustPressed("shoot"))
+			if (Input.IsActionJustPressed("Joycon_shoot") && Name == "1")
 			{
 				_isShooting--;
 					if (_sprite.FlipH)
@@ -162,6 +265,21 @@ public partial class player : CharacterBody2D
 						velocity.X += -1500;
 						gunRight.Monitoring = true;
 					}
+			}
+			
+			if (Input.IsActionJustPressed("shoot") && Name != "1")
+			{
+				_isShooting--;
+				if (_sprite.FlipH)
+				{
+					velocity.X += 1500;
+					gunLeft.Monitoring = true;
+				}
+				else
+				{
+					velocity.X += -1500;
+					gunRight.Monitoring = true;
+				}
 			}
 			
 			// Handle animations.
