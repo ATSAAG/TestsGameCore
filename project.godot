@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 MultiplayerManagment="*res://MultiplayerManagment.cs"
 
+[display]
+
+window/size/mode=3
+window/size/resizable=false
+
 [dotnet]
 
 project/assembly_name="TestMovements"

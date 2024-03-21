@@ -14,10 +14,11 @@ script = ExtResource("1_7oqaf")
 playerScene = ExtResource("2_rcuel")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(627.456, -207.755)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(600, 348)
-scale = Vector2(0.227564, 0.196251)
+position = Vector2(956.318, 539.5)
+scale = Vector2(0.370931, 0.299063)
 texture = ExtResource("3_l1l05")
 
 [node name="TileMap" parent="." instance=ExtResource("2_hanmc")]
@@ -40,3 +41,19 @@ position = Vector2(-288.667, 96.6667)
 
 [node name="1" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
 position = Vector2(-189.333, 79.3333)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -503.333
+offset_top = 184.667
+offset_right = -400.333
+offset_bottom = 271.667
+text = "Cavier Souris:
+X pour tirer
+C pour dash"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -535.333
+offset_top = 862.0
+offset_right = -429.333
+offset_bottom = 949.0
+text = "Eloignez vous du rebord avant de tirer ! Vous pouvez remonter en utilisant le wall jump."
