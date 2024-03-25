@@ -18,13 +18,13 @@ public partial class player : CharacterBody2D
 	private CollisionShape2D _collisionShape;
 	private Area2D gunRight;
 	private Area2D gunLeft;
-
+	public Camera2D camera =  new Camera2D();
+	
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
-		
 		gunRight = GetNode<Area2D>("GunRight");
 		gunRight.Monitoring = false;
 		gunLeft = GetNode<Area2D>("GunLeft");
@@ -39,11 +39,16 @@ public partial class player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		
+		
 		Vector2 velocity = Velocity;
 		string animSpe = "normal";
 		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
 			Multiplayer.GetUniqueId())
 		{
+			camera.Enabled = true;
+			AddChild(camera);
+			camera.MakeCurrent();
 			// Add the gravity, fast fall.
 			if (!IsOnFloor())
 				if (Name != "1")

@@ -114,7 +114,7 @@ metadata/_edit_group_ = true
 position = Vector2(0, 4)
 scale = Vector2(0.0583568, 0.0528018)
 sprite_frames = SubResource("SpriteFrames_iktaj")
-animation = &"Hit"
+animation = &"Shoot"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -130,8 +130,6 @@ offset_left = -13.0
 offset_top = -37.0
 offset_right = 25.0
 offset_bottom = -14.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="GunRight" type="Area2D" parent="."]
 
