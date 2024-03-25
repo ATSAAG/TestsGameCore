@@ -18,6 +18,8 @@ public partial class player : CharacterBody2D
 	private CollisionShape2D _collisionShape;
 	private Area2D gunRight;
 	private Area2D gunLeft;
+
+	//Creer une camera pour ce joueur
 	public Camera2D camera =  new Camera2D();
 	
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -35,6 +37,12 @@ public partial class player : CharacterBody2D
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
 		//permet de differencier les joueurs
+
+
+		//enable la camera(je sais pas vrmt a quoi ca sert honetement, juste c obligé pr la rendre actif apres)
+  		camera.Enabled = true;
+    		//ajoute la camera en enfant au joueur, comme ca elle bouge en mm tps que le joueur
+		AddChild(camera);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -46,8 +54,8 @@ public partial class player : CharacterBody2D
 		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
 			Multiplayer.GetUniqueId())
 		{
-			camera.Enabled = true;
-			AddChild(camera);
+
+     			//rend la camea actif pr le joeur 
 			camera.MakeCurrent();
 			// Add the gravity, fast fall.
 			if (!IsOnFloor())
