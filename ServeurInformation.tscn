@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://ServeurBrowserInfo.cs" id="1_cj6cu"]
 
 [node name="ServeurInformation" type="HBoxContainer"]
+offset_top = 39.0
+offset_right = 349.0
+offset_bottom = 71.0
 script = ExtResource("1_cj6cu")
 
 [node name="Name" type="Label" parent="."]
