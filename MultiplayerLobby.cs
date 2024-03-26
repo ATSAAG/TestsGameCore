@@ -41,6 +41,7 @@ public partial class MultiplayerLobby : Control
 		}
 
 		GetNode<ServeurBrowser>("ServeurBrowser").JoinGame += joinGame;
+		ManageP2P();
 	} 
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,6 +54,35 @@ public partial class MultiplayerLobby : Control
 		RpcId(1,"SendPlayerInformation", GetNode<LineEdit>("LineEdit").Text, Multiplayer.GetUniqueId());
 	}
 
+
+	private string ManageP2P()
+	{
+		var upnp = new Upnp();
+		var discover = upnp.Discover();
+		if (discover==(int)Upnp.UpnpResult.Success)
+		{
+			if (upnp.GetGateway().IsValidGateway())
+			{
+				var map_result_udp = upnp.AddPortMapping(Port,Port,"godot_udp", "UDP", 0 );
+				var map_result_tcp = upnp.AddPortMapping(Port,Port,"godot_tcp", "TCP", 0 );
+
+				if (map_result_udp != (int)Upnp.UpnpResult.Success)
+				{
+					upnp.AddPortMapping(Port, Port, "", "UDP");
+				}
+				if (map_result_tcp != (int)Upnp.UpnpResult.Success)
+				{
+					upnp.AddPortMapping(Port, Port, "", "TCP");
+				}
+			}
+		}
+
+		var external_ip = upnp.QueryExternalAddress();
+		upnp.DeletePortMapping(9999, "UDP");
+		upnp.DeletePortMapping(9999, "TCP");
+		return external_ip;
+	}
+	
 	private void ConnectionFailed()
 	{
 		GD.Print("connection failed");
