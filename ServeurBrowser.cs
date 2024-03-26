@@ -58,7 +58,7 @@ public partial class ServeurBrowser : Control
 
 	private void SetUpListener()
 	{
-		var checkPort = _listener.Bind(_listenPort);
+		var checkPort = _listener.Bind(_listenPort, "0.0.0.0");
 		GD.Print(checkPort);
 		if (checkPort == Error.Ok)
 		{
