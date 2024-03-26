@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b7gwtd5g80xmc" path="res://player.tscn" id="2_rcuel"]
 [ext_resource type="PackedScene" uid="uid://l8gtmn7ir48q" path="res://sniper_frog.tscn" id="4_kngdy"]
 [ext_resource type="PackedScene" uid="uid://c0josf8my3plj" path="res://RunningFrog.tscn" id="5_dt51x"]
-[ext_resource type="Texture2D" uid="uid://deeksmklxkgvt" path="res://Assets usefull/Custom assets/Blocks/parallax_1.png" id="6_meblo"]
-[ext_resource type="Texture2D" uid="uid://g3r0tckpxcku" path="res://Assets usefull/Custom assets/Blocks/parallax_2.png" id="7_rdptu"]
-[ext_resource type="Texture2D" uid="uid://nj1j5tg5dtyr" path="res://Assets usefull/Custom assets/Blocks/parallax_3.png" id="8_yp1qb"]
+[ext_resource type="Texture2D" uid="uid://bx7xsmd6wew3" path="res://Assets usefull/Custom assets/Blocks/parallax_1.png" id="6_meblo"]
+[ext_resource type="Texture2D" uid="uid://bpa0of35q8pn6" path="res://Assets usefull/Custom assets/Blocks/parallax_2.png" id="7_rdptu"]
+[ext_resource type="Texture2D" uid="uid://dm4pjjxaypbff" path="res://Assets usefull/Custom assets/Blocks/parallax_3.png" id="8_yp1qb"]
 
 [node name="World" type="Node2D"]
 position = Vector2(868, 288)
