@@ -1,25 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dilkfbldiuood"]
+[gd_scene load_steps=9 format=3 uid="uid://dilkfbldiuood"]
 
 [ext_resource type="Script" path="res://SceneManager.cs" id="1_7oqaf"]
 [ext_resource type="PackedScene" uid="uid://x6mfh4sbat8u" path="res://tile_map.tscn" id="2_hanmc"]
 [ext_resource type="PackedScene" uid="uid://b7gwtd5g80xmc" path="res://player.tscn" id="2_rcuel"]
-[ext_resource type="Texture2D" uid="uid://3jsqswg0fixe" path="res://Assets usefull/Custom assets/Blocks/background.png" id="3_l1l05"]
 [ext_resource type="PackedScene" uid="uid://l8gtmn7ir48q" path="res://sniper_frog.tscn" id="4_kngdy"]
 [ext_resource type="PackedScene" uid="uid://c0josf8my3plj" path="res://RunningFrog.tscn" id="5_dt51x"]
+[ext_resource type="Texture2D" uid="uid://deeksmklxkgvt" path="res://Assets usefull/Custom assets/Blocks/parallax_1.png" id="6_meblo"]
+[ext_resource type="Texture2D" uid="uid://g3r0tckpxcku" path="res://Assets usefull/Custom assets/Blocks/parallax_2.png" id="7_rdptu"]
+[ext_resource type="Texture2D" uid="uid://nj1j5tg5dtyr" path="res://Assets usefull/Custom assets/Blocks/parallax_3.png" id="8_yp1qb"]
 
 [node name="World" type="Node2D"]
 position = Vector2(868, 288)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_7oqaf")
 playerScene = ExtResource("2_rcuel")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2(627.456, -207.755)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(956.318, 539.5)
-scale = Vector2(0.370931, 0.299063)
-texture = ExtResource("3_l1l05")
 
 [node name="TileMap" parent="." instance=ExtResource("2_hanmc")]
 position = Vector2(-571.333, 148)
@@ -57,3 +51,31 @@ offset_top = 862.0
 offset_right = -429.333
 offset_bottom = 949.0
 text = "Eloignez vous du rebord avant de tirer ! Vous pouvez remonter en utilisant le wall jump."
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/sky"]
+texture = ExtResource("6_meblo")
+centered = false
+
+[node name="far mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1152.64, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/far mountains"]
+scale = Vector2(0.801, 0.801)
+texture = ExtResource("7_rdptu")
+centered = false
+
+[node name="near mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1152.64, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/near mountains"]
+scale = Vector2(0.801, 0.801)
+texture = ExtResource("8_yp1qb")
+centered = false
