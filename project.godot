@@ -11,17 +11,17 @@ config_version=5
 [application]
 
 config/name="Test"
-run/main_scene="res://interface_utilisateur.tscn"
+run/main_scene="res://Server/interface_utilisateur.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-MultiplayerManagment="*res://MultiplayerManagment.cs"
+MultiplayerManagment="*res://Server/MultiplayerManagment.cs"
 
 [display]
 
-window/size/mode=3
+window/size/mode=2
 window/size/resizable=false
 
 [dotnet]
