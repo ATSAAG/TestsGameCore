@@ -48,14 +48,14 @@ public abstract partial class GroundedEnemy : CharacterBody2D
 				}
 			}*/
 
-			Die(this);
-			Rpc("Die", this);
+			die();
+			RpcId(0,"Die");
 
 		}
 	}
 
-	public void Die(GroundedEnemy a)
+	public void die()
 	{
-		a.QueueFree();
+		QueueFree();
 	}
 }
