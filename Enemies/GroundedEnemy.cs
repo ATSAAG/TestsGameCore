@@ -1,12 +1,13 @@
 using System.Linq;
 using Godot;
 using TestMovements.Enemies;
+using TestMovements.Server;
 using Vector2 = Godot.Vector2;
 
-public abstract partial class GroundedEnemy : CharacterBody2D
+public abstract partial class GroundedEnemy : NetworkEntity
 {
-	public float Health;
-	protected float Speed;
+	//public float Health;
+	//protected float Speed;
 	protected RayCast2D[] _rayCasts;
 	protected AnimatedSprite2D _sprite;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -14,15 +15,30 @@ public abstract partial class GroundedEnemy : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (IsSyncEnabled && GetTree().GetMultiplayer().IsServer())
+		
+		{
+			if (IsAlive)
+			{
+				Godot.Vector2 velocity = Move();
+                            		// Add the gravity
+                            		if (!IsOnFloor())
+                            			velocity.Y += Gravity * (float)delta;
+                            		CheckRaycasts();
+                            		HandleAnimations();
+                            		Velocity = velocity;
+                            		MoveAndSlide();
+                		            Rpc(nameof(SyncState), Position, Rotation, Health, IsAlive, Speed);
+			}
 
-		Godot.Vector2 velocity = Move();
-		// Add the gravity
-		if (!IsOnFloor())
-			velocity.Y += Gravity * (float)delta;
-		CheckRaycasts();
-		HandleAnimations();
-		Velocity = velocity;
-		MoveAndSlide();
+			if (!IsAlive)
+			{
+				die();
+			}
+			
+			
+		}
+		
 	}
 
 	public abstract Godot.Vector2 Move();
@@ -30,9 +46,12 @@ public abstract partial class GroundedEnemy : CharacterBody2D
 
 	public abstract void HandleAnimations();
 
-	public void Hit(float damage)
-	{
-		Health -= damage;
+	public void GetHit(float damage)
+	{if (GetTree().GetMultiplayer().IsServer())
+		{
+			Hit(damage);
+		}
+		/*Health -= damage;
 		if (Health <= 0)
 		{
 			/*var id = 0;
@@ -46,12 +65,13 @@ public abstract partial class GroundedEnemy : CharacterBody2D
 				{
 					i.QueueFree();
 				}
-			}*/
+			}#1#
 
 			die();
-			RpcId(0,"Die");
+			//RpcId(Multiplayer.MultiplayerPeer.GetUniqueId(),"die");
+			*/
 
-		}
+		
 	}
 
 	public void die()

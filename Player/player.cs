@@ -55,7 +55,7 @@ public partial class player : CharacterBody2D
 			Multiplayer.GetUniqueId())
 		{
 
-     			//rend la camea actif pr le joeur 
+     			//rend la camera actif pr le joueur 
 			camera.MakeCurrent();
 			// Add the gravity, fast fall.
 			if (!IsOnFloor())
