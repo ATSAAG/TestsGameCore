@@ -385,7 +385,7 @@ public partial class player : CharacterBody2D
 	{
 		if ((body.Name == "RunningFrog" || body.Name == "SniperFrog"))
 		{
-			((GroundedEnemy)body).Hit(5);
+			((GroundedEnemy)body).GetHit(5);
 		}
 	}
 

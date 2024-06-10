@@ -11,12 +11,14 @@ public abstract partial class GroundedEnemy : NetworkEntity
 	protected RayCast2D[] _rayCasts;
 	protected AnimatedSprite2D _sprite;
 	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	protected bool isAttacking = false;
+	//protected bool isAttacking = false;
+	
+	
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (IsSyncEnabled && GetTree().GetMultiplayer().IsServer())
-		
+		if (   GetTree().GetMultiplayer().HasMultiplayerPeer())
+		//IsSyncEnabled && GetTree().GetMultiplayer().IsServer() &&
 		{
 			if (IsAlive)
 			{
@@ -25,10 +27,11 @@ public abstract partial class GroundedEnemy : NetworkEntity
                             		if (!IsOnFloor())
                             			velocity.Y += Gravity * (float)delta;
                             		CheckRaycasts();
+		                            //Rpc(nameof(HandleAnimations));
                             		HandleAnimations();
                             		Velocity = velocity;
                             		MoveAndSlide();
-                		            Rpc(nameof(SyncState), Position, Rotation, Health, IsAlive, Speed);
+                		            Rpc(nameof(SyncState), Position, Rotation, Health, IsAlive, Speed, isAttacking);
 			}
 
 			if (!IsAlive)
@@ -46,11 +49,22 @@ public abstract partial class GroundedEnemy : NetworkEntity
 
 	public abstract void HandleAnimations();
 
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void GetHit(float damage)
-	{if (GetTree().GetMultiplayer().IsServer())
+	{Hit(damage);
+		
+		/*GD.Print(GetTree().GetMultiplayer().IsServer());
+		if (GetTree().GetMultiplayer().IsServer())
 		{
+			GD.Print($"Damage applied on server: {damage}");
 			Hit(damage);
 		}
+		else
+		{
+			GD.Print($"Client sending damage request to server: {damage}");
+			RpcId(1, nameof(GetHit), damage);
+		}*/
+		
 		/*Health -= damage;
 		if (Health <= 0)
 		{
@@ -71,9 +85,10 @@ public abstract partial class GroundedEnemy : NetworkEntity
 			//RpcId(Multiplayer.MultiplayerPeer.GetUniqueId(),"die");
 			*/
 
-		
+
 	}
 
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
 	public void die()
 	{
 		QueueFree();
