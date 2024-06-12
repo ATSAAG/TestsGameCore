@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using TestMovements;
 
 public partial class player : CharacterBody2D
 {
@@ -43,6 +44,14 @@ public partial class player : CharacterBody2D
   		camera.Enabled = true;
     		//ajoute la camera en enfant au joueur, comme ca elle bouge en mm tps que le joueur
 		AddChild(camera);
+		if (Name == "1")
+		{
+			CheckPointManager._player1 = this;
+		}
+		else
+		{
+			CheckPointManager._player2 = this;
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -403,7 +412,21 @@ public partial class player : CharacterBody2D
 			Health -= damage;
 		}
 
+		if (Health <= 0)
+		{
+			Die();
+		}
+		
+
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	
+	public void Die()
+	{
+		GD.Print(Name + " is dead");
+		CheckPointManager.respawn();
+		Health = 10;
 	}
 }

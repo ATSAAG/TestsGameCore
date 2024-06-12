@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7gwtd5g80xmc"]
+[gd_scene load_steps=16 format=3 uid="uid://b7gwtd5g80xmc"]
 
 [ext_resource type="Script" path="res://Player/player.cs" id="1_b85xb"]
 [ext_resource type="Texture2D" uid="uid://mljh2v8hu5r5" path="res://Assets usefull/Custom assets/Chats/cat_dash1.png" id="2_yuagr"]
@@ -104,6 +104,9 @@ properties/2/replication_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1rqg"]
 size = Vector2(42.6667, 18.6667)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2ngk"]
+size = Vector2(19.3333, 22)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 3
@@ -142,6 +145,12 @@ shape = SubResource("RectangleShape2D_b1rqg")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GunLeft"]
 position = Vector2(-31, 4.667)
 shape = SubResource("RectangleShape2D_b1rqg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.333333, 4.33333)
+shape = SubResource("RectangleShape2D_o2ngk")
 
 [connection signal="body_entered" from="GunRight" to="." method="_on_gun_body_entered"]
 [connection signal="body_entered" from="GunLeft" to="." method="_on_gun_body_entered"]
