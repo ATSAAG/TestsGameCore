@@ -21,9 +21,32 @@ public partial class SaveManager : Control
 		cur.QueueFree();
 		GetTree().CurrentScene = scene;
 	}
+	private void _on_load_level_button_down()
+	{
+		GetNode<loading_screen>("LoadingScreen").LoadLevel("res://world.tscn");
+	}
+	private void _on_continue_button_down()
+	{
+		SaveLoadManager.SaveGame("save");
+		var gameData = SaveLoadManager.LoadGame("save");
+		GD.Print(gameData["Path"]);
+		MultiplayerManagment.multiplayerManagment.LoadLevel(gameData["Path"]);
+	}
+
+
+	private void _on_new_button_down()
+	{
+		DirAccess directory = DirAccess.Open("user://");
+		if (directory.DirExists("Saves"))
+		{
+			directory.Remove("Saves");
+		}
+		GetNode<loading_screen>("LoadingScreen").LoadLevel("res://world.tscn");
+
+		SaveLoadManager.SaveGame("save");
+
+	
+	}
+
 }
-
-
-
-
 

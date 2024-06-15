@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using GodotCSTools;
 using TestMovements;
 
 public partial class player : CharacterBody2D
@@ -52,6 +53,16 @@ public partial class player : CharacterBody2D
 		{
 			CheckPointManager._player2 = this;
 		}
+		
+		
+		
+		_gameSceneInstance  = GetTree().CurrentScene;
+			//GetNode("world");
+
+	
+		_gameScene = (PackedScene)ResourceLoader.Load("res://world.tscn");
+		
+		
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -422,11 +433,63 @@ public partial class player : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	
+	 
+	private static PackedScene _gameScene = ResourceLoader.Load<PackedScene>("res://world.tscn");
+	private Node _gameSceneInstance = _gameScene.Instantiate<Node2D>();
 	public void Die()
 	{
 		GD.Print(Name + " is dead");
-		CheckPointManager.respawn();
-		Health = 10;
+	
+		//GetTree().ReloadCurrentScene();
+		//GetTree().Root.AddChild( ResourceLoader.Load<PackedScene>("res://world.tscn").Instantiate<Node2D>());
+		//this.Hide();
+		if (GetTree().GetMultiplayer().IsServer())
+		{
+			//Rpc(nameof(ResetLevel));
+		}
+		//GetTree().ReloadCurrentScene();
+		//GetTree().Root.GetChild(0).GetTree().ReloadCurrentScene();
+		//GetTree().Root.GetChild<SceneTree>(0).ReloadCurrentScene();
+		// foreach (var node in GetTree().Root.GetChildren())
+		// {
+		// 	if ( node is Node3D || node is Control)
+		// 	{
+		// 		GetTree().Root.RemoveChild(node);
+		// 		node.QueueFree();
+		// 	}
+		// }
+		// GetTree().Root.AddChild(_gameSceneInstance);
+		// QueueFree();
+
+
+
+		if (GetTree().GetMultiplayer().IsServer())
+		{
+			CheckPointManager.respawn();
+		}
+		else
+		{
+			Rpc(nameof(CheckPointManager.respawn));
+		
+		}
+		
+
+		//CheckPointManager._player1.Health = 10;
+		//CheckPointManager._player2.Health = 10;
+	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void ResetLevel()
+	{
+		if (_gameSceneInstance != null)
+		{
+			_gameSceneInstance.QueueFree();
+		}
+
+		_gameSceneInstance = _gameScene.Instantiate();
+		GetTree().Root.AddChild(_gameSceneInstance);
+
+		
+		_gameSceneInstance.Owner = this;
 	}
 }

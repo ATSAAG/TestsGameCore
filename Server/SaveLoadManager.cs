@@ -1,5 +1,8 @@
 ﻿using Godot;
 using System;
+using System.Text.Json.Serialization;
+using Godot.Collections;
+using Newtonsoft.Json;
 
 public partial class SaveLoadManager : Node
 {
@@ -13,7 +16,7 @@ public partial class SaveLoadManager : Node
 	{
 	}
 
-	public void SaveGame(string name)
+	public static void SaveGame(string name)
 	{
 		DirAccess directory = DirAccess.Open("user://");
 		if (!directory.DirExists("Saves"))
@@ -26,5 +29,25 @@ public partial class SaveLoadManager : Node
 		{
 			directory.MakeDir(name);
 		}
+
+		Dictionary<string, string> saveGameData = new Dictionary<string, string>();
+		saveGameData.Add("Path", MultiplayerManagment.multiplayerManagment.Path);
+		foreach (var c in saveGameData.Values)
+		{
+			GD.Print(c);
+		}
+		
+		string saveJson = JsonConvert.SerializeObject(saveGameData);
+
+		FileAccess file = FileAccess.Open($"user://Saves/{name}.json", FileAccess.ModeFlags.Write);
+		file.StoreString(saveJson);
+		file.Close();
+	}
+
+	public static Dictionary<string, string> LoadGame(string name)
+	{
+		FileAccess file = FileAccess.Open($"user://Saves/{name}/{name}.json", FileAccess.ModeFlags.Read);
+		string content = file.GetAsText();
+		return JsonConvert.DeserializeObject(content) as Dictionary<string,string>;
 	}
 }

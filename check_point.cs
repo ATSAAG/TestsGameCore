@@ -28,6 +28,7 @@ public partial  class check_point : Node2D
 		{
 			GD.Print("checkpoint taken");
 			Activate();
+			SaveLoadManager.SaveGame("save");
 		}
 	}
 

@@ -60,6 +60,7 @@ scroll_ignore_camera_zoom = true
 motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/sky"]
+scale = Vector2(0.801, 0.801)
 texture = ExtResource("6_meblo")
 centered = false
 
