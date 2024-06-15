@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bb8qmxgko6s2j"]
 
 [ext_resource type="Script" path="res://Enemies/bullet.cs" id="1_wn3bd"]
-[ext_resource type="Texture2D" uid="uid://bkv8ei3h2lrev" path="res://Assets usefull/laserRed01.png" id="2_hdqi4"]
+[ext_resource type="Texture2D" uid="uid://dtdmjnjbcciaq" path="res://Enemies/laserRed01.png" id="2_hdqi4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wdvny"]
 radius = 24.0

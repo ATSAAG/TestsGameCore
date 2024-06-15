@@ -6,10 +6,10 @@ using TestMovements;
 
 public partial class MultiplayerLobby : Control
 {
-	private ENetMultiplayerPeer network = new ENetMultiplayerPeer();
+	[Export]private ENetMultiplayerPeer network = new ENetMultiplayerPeer();
 	[Export] private int Port = 8910;
 	[Export] private string Adress = "127.0.0.1";
-	private ENetMultiplayerPeer peer;
+	[Export]private ENetMultiplayerPeer peer;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

@@ -14,13 +14,34 @@ size = Vector2(72.5, 121)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bwhop")
+"texture": ExtResource("2_m6je1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_mbgeo")
+"texture": ExtResource("3_0gvrj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_afyhu")
+"texture": ExtResource("4_1wd6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3drbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2grsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qsir2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pjcwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7xg4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kh8t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_diktt")
 }],
 "loop": true,
 "name": &"attack",
@@ -28,10 +49,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_b4l0m")
+"texture": ExtResource("1_ogb58")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_nlwm2")
+"texture": ExtResource("2_26jfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2yope")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_snd08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tkgh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hw0ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ohonp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8djvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nsm5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1c1um")
 }],
 "loop": true,
 "name": &"walk",
@@ -39,7 +84,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlyts"]
-size = Vector2(93, 171)
+size = Vector2(103.5, 130)
 
 [node name="boss2" type="CharacterBody2D" groups=["Enemy"]]
 position = Vector2(0, -39)
@@ -50,24 +95,24 @@ position = Vector2(-2.89758, -65.4999)
 shape = SubResource("RectangleShape2D_27im4")
 
 [node name="AnimatedSprite2D_boss2" type="AnimatedSprite2D" parent="."]
-position = Vector2(103.5, -87.5893)
-scale = Vector2(0.0465473, 0.0462247)
+position = Vector2(45.1764, -73.7953)
+scale = Vector2(0.161043, 0.193838)
 sprite_frames = SubResource("SpriteFrames_5t7dn")
 animation = &"attack"
 
 [node name="RayCast2D_boss2" type="RayCast2D" parent="."]
-position = Vector2(347, 30)
+position = Vector2(67.3524, -13.9999)
 target_position = Vector2(21, 0)
 
 [node name="RayCast2D2_boss2" type="RayCast2D" parent="."]
-position = Vector2(-335, 29)
+position = Vector2(-40.6476, -16.9999)
 target_position = Vector2(-18, 0)
 
 [node name="Hitbox_boss2" type="Area2D" parent="."]
 position = Vector2(0.352417, -2.99994)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_boss2"]
-position = Vector2(0.647583, -46.0001)
+position = Vector2(-2, -67)
 shape = SubResource("RectangleShape2D_jlyts")
 
 [connection signal="body_entered" from="Hitbox_boss2" to="." method="_on_hitboxe_body_entered"]
