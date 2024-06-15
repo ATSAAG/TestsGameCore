@@ -1,1 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjp6mhsejlnut"]
 
+[ext_resource type="Script" path="res://boss_2.cs" id="1_q6lao"]
+[ext_resource type="Texture2D" uid="uid://c3d7rjlei1e7h" path="res://Assets usefull/monster assets/PNG/boss_attack_1.png" id="2_bwhop"]
+[ext_resource type="Texture2D" uid="uid://dh8yx53w7rdot" path="res://Assets usefull/monster assets/PNG/boss_attack_2.png" id="3_mbgeo"]
+[ext_resource type="Texture2D" uid="uid://cepn2nis76ut3" path="res://Assets usefull/monster assets/PNG/boss_attack_3.png" id="4_afyhu"]
+[ext_resource type="Texture2D" uid="uid://cdlsywjxdw1qj" path="res://Assets usefull/monster assets/PNG/boss_walk_1.png" id="5_b4l0m"]
+[ext_resource type="Texture2D" uid="uid://iv2jpwkoyo3" path="res://Assets usefull/monster assets/PNG/boss_walk_2.png" id="6_nlwm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27im4"]
+size = Vector2(72.5, 121)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5t7dn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bwhop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mbgeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_afyhu")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b4l0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nlwm2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlyts"]
+size = Vector2(93, 171)
+
+[node name="boss2" type="CharacterBody2D" groups=["Enemy"]]
+position = Vector2(0, -39)
+script = ExtResource("1_q6lao")
+
+[node name="CollisionShape2D_boss2" type="CollisionShape2D" parent="."]
+position = Vector2(-2.89758, -65.4999)
+shape = SubResource("RectangleShape2D_27im4")
+
+[node name="AnimatedSprite2D_boss2" type="AnimatedSprite2D" parent="."]
+position = Vector2(103.5, -87.5893)
+scale = Vector2(0.0465473, 0.0462247)
+sprite_frames = SubResource("SpriteFrames_5t7dn")
+animation = &"attack"
+
+[node name="RayCast2D_boss2" type="RayCast2D" parent="."]
+position = Vector2(347, 30)
+target_position = Vector2(21, 0)
+
+[node name="RayCast2D2_boss2" type="RayCast2D" parent="."]
+position = Vector2(-335, 29)
+target_position = Vector2(-18, 0)
+
+[node name="Hitbox_boss2" type="Area2D" parent="."]
+position = Vector2(0.352417, -2.99994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_boss2"]
+position = Vector2(0.647583, -46.0001)
+shape = SubResource("RectangleShape2D_jlyts")
+
+[connection signal="body_entered" from="Hitbox_boss2" to="." method="_on_hitboxe_body_entered"]
