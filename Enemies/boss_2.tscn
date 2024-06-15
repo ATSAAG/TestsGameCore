@@ -1,0 +1,133 @@
+[gd_scene load_steps=25 format=3 uid="uid://bjp6mhsejlnut"]
+
+[ext_resource type="Texture2D" uid="uid://tcwykjkt3cgs" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_000.png" id="1_ogb58"]
+[ext_resource type="Script" path="res://boss_2.cs" id="1_q6lao"]
+[ext_resource type="Texture2D" uid="uid://d2q8cfe4xibie" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_001.png" id="2_26jfk"]
+[ext_resource type="Texture2D" uid="uid://bejkbx7sua12d" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_000.png" id="2_m6je1"]
+[ext_resource type="Texture2D" uid="uid://blay4fsir1epi" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_001.png" id="3_0gvrj"]
+[ext_resource type="Texture2D" uid="uid://chn7o6fb73tlp" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_002.png" id="3_2yope"]
+[ext_resource type="Texture2D" uid="uid://dmylpdophuevc" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_002.png" id="4_1wd6x"]
+[ext_resource type="Texture2D" uid="uid://ck8qe7be1pmu6" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_003.png" id="4_snd08"]
+[ext_resource type="Texture2D" uid="uid://d1at277yt8d0v" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_003.png" id="5_3drbp"]
+[ext_resource type="Texture2D" uid="uid://baumv05qirj24" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_004.png" id="5_tkgh0"]
+[ext_resource type="Texture2D" uid="uid://s3bjctcib2ug" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_004.png" id="6_2grsf"]
+[ext_resource type="Texture2D" uid="uid://ckmseha8iru5p" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_005.png" id="6_hw0ww"]
+[ext_resource type="Texture2D" uid="uid://rkubvvp4rtwa" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_006.png" id="7_ohonp"]
+[ext_resource type="Texture2D" uid="uid://d1fblmpdqftcp" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_005.png" id="7_qsir2"]
+[ext_resource type="Texture2D" uid="uid://d1f2afgdp581l" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_007.png" id="8_8djvh"]
+[ext_resource type="Texture2D" uid="uid://begpg3b3outma" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_006.png" id="8_pjcwh"]
+[ext_resource type="Texture2D" uid="uid://c5xj16x25essr" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_007.png" id="9_7xg4k"]
+[ext_resource type="Texture2D" uid="uid://cdxv2kxfn8ywh" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_008.png" id="9_nsm5b"]
+[ext_resource type="Texture2D" uid="uid://dxallcjklragu" path="res://Assets usefull/monster assets/PNG/Non essential Animation Boss/Animation Walk Boss/Walk_009.png" id="10_1c1um"]
+[ext_resource type="Texture2D" uid="uid://b31qx7752hc75" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_008.png" id="10_kh8t4"]
+[ext_resource type="Texture2D" uid="uid://dcn4slwgsu60m" path="res://Assets usefull/monster assets/PNG/Animation Attack Boss/Attack_009.png" id="11_diktt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27im4"]
+size = Vector2(72.5, 121)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5t7dn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m6je1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0gvrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1wd6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3drbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2grsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qsir2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pjcwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7xg4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kh8t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_diktt")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ogb58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_26jfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2yope")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_snd08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tkgh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hw0ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ohonp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8djvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nsm5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1c1um")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlyts"]
+size = Vector2(103.5, 130)
+
+[node name="boss2" type="CharacterBody2D" groups=["Enemy"]]
+position = Vector2(0, -39)
+script = ExtResource("1_q6lao")
+
+[node name="CollisionShape2D_boss2" type="CollisionShape2D" parent="."]
+position = Vector2(-2.89758, -65.4999)
+shape = SubResource("RectangleShape2D_27im4")
+
+[node name="AnimatedSprite2D_boss2" type="AnimatedSprite2D" parent="."]
+position = Vector2(45.1764, -73.7953)
+scale = Vector2(0.161043, 0.193838)
+sprite_frames = SubResource("SpriteFrames_5t7dn")
+animation = &"attack"
+
+[node name="RayCast2D_boss2" type="RayCast2D" parent="."]
+position = Vector2(67.3524, -13.9999)
+target_position = Vector2(21, 0)
+
+[node name="RayCast2D2_boss2" type="RayCast2D" parent="."]
+position = Vector2(-40.6476, -16.9999)
+target_position = Vector2(-18, 0)
+
+[node name="Hitbox_boss2" type="Area2D" parent="."]
+position = Vector2(0.352417, -2.99994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_boss2"]
+position = Vector2(-2, -67)
+shape = SubResource("RectangleShape2D_jlyts")
+
+[connection signal="body_entered" from="Hitbox_boss2" to="." method="_on_hitboxe_body_entered"]
