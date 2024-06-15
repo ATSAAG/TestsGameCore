@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>sniper_frog.tscn</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d0d0d0;}
+</style>
+</head>
+<body bgcolor="#262626">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+sniper_frog.tscn</font>
+</center></td></tr></table>
+<pre><span class="s0">[gd_scene load_steps=6 format=3 uid=&quot;uid://l8gtmn7ir48q&quot;]</span>
+
+<span class="s0">[ext_resource type=&quot;Script&quot; path=&quot;res://Enemies/SniperFrog.cs&quot; id=&quot;1_hr0js&quot;]</span>
+<span class="s0">[ext_resource type=&quot;Texture2D&quot; uid=&quot;uid://donlv17n8nwf0&quot; path=&quot;res://Assets usefull/Custom assets/Frogs/frog_sniper_aim.png&quot; id=&quot;2_ugu2y&quot;]</span>
+<span class="s0">[ext_resource type=&quot;Texture2D&quot; uid=&quot;uid://c10m2xvpwoca5&quot; path=&quot;res://Assets usefull/Custom assets/Frogs/frog_snipe_shot.png&quot; id=&quot;3_j3h6i&quot;]</span>
+
+<span class="s0">[sub_resource type=&quot;SpriteFrames&quot; id=&quot;SpriteFrames_6phe4&quot;]</span>
+<span class="s0">animations = [{</span>
+<span class="s0">&quot;frames&quot;: [{</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: ExtResource(&quot;2_ugu2y&quot;)</span>
+<span class="s0">}],</span>
+<span class="s0">&quot;loop&quot;: true,</span>
+<span class="s0">&quot;name&quot;: &amp;&quot;Aim&quot;,</span>
+<span class="s0">&quot;speed&quot;: 5.0</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;frames&quot;: [{</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: ExtResource(&quot;3_j3h6i&quot;)</span>
+<span class="s0">}],</span>
+<span class="s0">&quot;loop&quot;: true,</span>
+<span class="s0">&quot;name&quot;: &amp;&quot;Shoot&quot;,</span>
+<span class="s0">&quot;speed&quot;: 5.0</span>
+<span class="s0">}]</span>
+
+<span class="s0">[sub_resource type=&quot;RectangleShape2D&quot; id=&quot;RectangleShape2D_otemt&quot;]</span>
+<span class="s0">size = Vector2(578, 203)</span>
+
+<span class="s0">[node name=&quot;SniperFrog&quot; type=&quot;CharacterBody2D&quot;]</span>
+<span class="s0">script = ExtResource(&quot;1_hr0js&quot;)</span>
+
+<span class="s0">[node name=&quot;AnimatedSprite2D&quot; type=&quot;AnimatedSprite2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(76, -86)</span>
+<span class="s0">sprite_frames = SubResource(&quot;SpriteFrames_6phe4&quot;)</span>
+<span class="s0">animation = &amp;&quot;Shoot&quot;</span>
+<span class="s0">autoplay = &quot;Aim&quot;</span>
+<span class="s0">flip_h = true</span>
+
+<span class="s0">[node name=&quot;CollisionShape2D&quot; type=&quot;CollisionShape2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(166, 3)</span>
+<span class="s0">shape = SubResource(&quot;RectangleShape2D_otemt&quot;)</span>
+
+<span class="s0">[node name=&quot;RayCast2D&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-102, 42)</span>
+<span class="s0">target_position = Vector2(-2078, 0)</span>
+<span class="s0">collision_mask = 2</span>
+<span class="s0">hit_from_inside = true</span>
+</pre>
+</body>
+</html>

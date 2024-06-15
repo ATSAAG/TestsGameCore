@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>GroundedEnemy.cs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #6c95eb;}
+.s1 { color: #d0d0d0;}
+.s2 { color: #bdbdbd;}
+.s3 { color: #85c46c; font-style: italic;}
+.s4 { color: #c9a26d;}
+</style>
+</head>
+<body bgcolor="#262626">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GroundedEnemy.cs</font>
+</center></td></tr></table>
+<pre><span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Linq</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">Godot</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">TestMovements</span><span class="s2">.</span><span class="s1">Enemies</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">TestMovements</span><span class="s2">.</span><span class="s1">Server</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">Vector2 </span><span class="s2">= </span><span class="s1">Godot</span><span class="s2">.</span><span class="s1">Vector2</span><span class="s2">;</span>
+
+<span class="s0">public abstract </span><span class="s1">partial </span><span class="s0">class </span><span class="s1">GroundedEnemy : NetworkEntity</span>
+<span class="s2">{</span>
+	<span class="s3">//public float Health;</span>
+	<span class="s3">//protected float Speed;</span>
+	<span class="s0">protected </span><span class="s1">RayCast2D</span><span class="s2">[] </span><span class="s1">_rayCasts</span><span class="s2">;</span>
+	<span class="s0">protected </span><span class="s1">AnimatedSprite2D _sprite</span><span class="s2">;</span>
+	<span class="s0">public float </span><span class="s1">Gravity </span><span class="s2">= </span><span class="s1">ProjectSettings</span><span class="s2">.</span><span class="s1">GetSetting</span><span class="s2">(</span><span class="s4">&quot;physics/2d/default_gravity&quot;</span><span class="s2">).</span><span class="s1">AsSingle</span><span class="s2">();</span>
+	<span class="s3">//protected bool isAttacking = false;</span>
+	
+	
+
+	<span class="s0">public override void </span><span class="s1">_PhysicsProcess</span><span class="s2">(</span><span class="s0">double </span><span class="s1">delta</span><span class="s2">)</span>
+	<span class="s2">{</span>
+		<span class="s0">if </span><span class="s2">(   </span><span class="s1">GetTree</span><span class="s2">().</span><span class="s1">GetMultiplayer</span><span class="s2">().</span><span class="s1">HasMultiplayerPeer</span><span class="s2">())</span>
+		<span class="s3">//IsSyncEnabled &amp;&amp; GetTree().GetMultiplayer().IsServer() &amp;&amp;</span>
+		<span class="s2">{</span>
+			<span class="s0">if </span><span class="s2">(</span><span class="s1">IsAlive</span><span class="s2">)</span>
+			<span class="s2">{</span>
+				<span class="s1">Godot</span><span class="s2">.</span><span class="s1">Vector2 velocity </span><span class="s2">= </span><span class="s1">Move</span><span class="s2">();</span>
+                            		<span class="s3">// Add the gravity</span>
+                            		<span class="s0">if </span><span class="s2">(</span><span class="s1">!IsOnFloor</span><span class="s2">())</span>
+                            			<span class="s1">velocity</span><span class="s2">.</span><span class="s1">Y </span><span class="s2">+= </span><span class="s1">Gravity </span><span class="s2">* (</span><span class="s0">float</span><span class="s2">)</span><span class="s1">delta</span><span class="s2">;</span>
+                            		<span class="s1">CheckRaycasts</span><span class="s2">();</span>
+		                            <span class="s3">//Rpc(nameof(HandleAnimations));</span>
+                            		<span class="s1">HandleAnimations</span><span class="s2">();</span>
+                            		<span class="s1">Velocity </span><span class="s2">= </span><span class="s1">velocity</span><span class="s2">;</span>
+                            		<span class="s1">MoveAndSlide</span><span class="s2">();</span>
+                		            <span class="s1">Rpc</span><span class="s2">(</span><span class="s1">nameof</span><span class="s2">(</span><span class="s1">SyncState</span><span class="s2">), </span><span class="s1">Position</span><span class="s2">, </span><span class="s1">Rotation</span><span class="s2">, </span><span class="s1">Health</span><span class="s2">, </span><span class="s1">IsAlive</span><span class="s2">, </span><span class="s1">Speed</span><span class="s2">, </span><span class="s1">isAttacking</span><span class="s2">);</span>
+			<span class="s2">}</span>
+
+			<span class="s0">if </span><span class="s2">(</span><span class="s1">!IsAlive</span><span class="s2">)</span>
+			<span class="s2">{</span>
+				<span class="s1">die</span><span class="s2">();</span>
+			<span class="s2">}</span>
+			
+			
+		<span class="s2">}</span>
+		
+	<span class="s2">}</span>
+
+	<span class="s0">public abstract </span><span class="s1">Godot</span><span class="s2">.</span><span class="s1">Vector2 Move</span><span class="s2">();</span>
+	<span class="s0">public abstract void </span><span class="s1">CheckRaycasts</span><span class="s2">();</span>
+
+	<span class="s0">public abstract void </span><span class="s1">HandleAnimations</span><span class="s2">();</span>
+
+	<span class="s2">[</span><span class="s1">Rpc</span><span class="s2">(</span><span class="s1">MultiplayerApi</span><span class="s2">.</span><span class="s1">RpcMode</span><span class="s2">.</span><span class="s1">AnyPeer</span><span class="s2">)]</span>
+	<span class="s0">public void </span><span class="s1">GetHit</span><span class="s2">(</span><span class="s0">float </span><span class="s1">damage</span><span class="s2">)</span>
+	<span class="s2">{</span><span class="s1">Hit</span><span class="s2">(</span><span class="s1">damage</span><span class="s2">);</span>
+		
+		<span class="s3">/*GD.Print(GetTree().GetMultiplayer().IsServer()); 
+        if (GetTree().GetMultiplayer().IsServer()) 
+        { 
+            GD.Print($&quot;Damage applied on server: {damage}&quot;); 
+            Hit(damage); 
+        } 
+        else 
+        { 
+            GD.Print($&quot;Client sending damage request to server: {damage}&quot;); 
+            RpcId(1, nameof(GetHit), damage); 
+        }*/</span>
+		
+		<span class="s3">/*Health -= damage; 
+        if (Health &lt;= 0) 
+        { 
+            /*var id = 0; 
+            MultiplayerManagment.Enemies.Remove(MultiplayerManagment.Enemies.Where(i =&gt; i.Id == id).First&lt;EnemyInfo&gt;()); 
+            var playerr = GetTree().GetNodesInGroup(&quot;Player&quot;); 
+            foreach (var i in playerr) 
+            { 
+                //GetNode&lt;Label&gt;(&quot;Label&quot;).Text = &quot;*disconected*&quot;; 
+                GD.Print(i.Name); 
+                if (i.Name == id.ToString()) 
+                { 
+                    i.QueueFree(); 
+                } 
+            }#1# 
+ 
+            die(); 
+            //RpcId(Multiplayer.MultiplayerPeer.GetUniqueId(),&quot;die&quot;); 
+            */</span>
+
+
+	<span class="s2">}</span>
+
+	<span class="s2">[</span><span class="s1">Rpc</span><span class="s2">(</span><span class="s1">MultiplayerApi</span><span class="s2">.</span><span class="s1">RpcMode</span><span class="s2">.</span><span class="s1">AnyPeer</span><span class="s2">)]</span>
+	<span class="s0">public void </span><span class="s1">die</span><span class="s2">()</span>
+	<span class="s2">{</span>
+		<span class="s1">QueueFree</span><span class="s2">();</span>
+	<span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

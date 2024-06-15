@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://c1fq2rdcx6qyd"
+=======
+uid="uid://bsv5umr58k32q"
+>>>>>>> origin/main
 path="res://.godot/imported/respawn_point.png-13235bcb8db443e0e1717dce97e4abd2.ctex"
 metadata={
 "vram_texture": false

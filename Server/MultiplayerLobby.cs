@@ -209,7 +209,9 @@ public partial class MultiplayerLobby : Control
 		PlayerInfo playerInfo = new PlayerInfo()
 		{
 			Name = name,
-			Id = id
+			Id = id,
+			
+			
 		};
 		if (!MultiplayerManagment.Players.Contains(playerInfo))
 		{

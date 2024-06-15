@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>WalkingEnemy.tscn</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d0d0d0;}
+</style>
+</head>
+<body bgcolor="#262626">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+WalkingEnemy.tscn</font>
+</center></td></tr></table>
+<pre><span class="s0">[gd_scene load_steps=17 format=3 uid=&quot;uid://c0548juqjjm81&quot;]</span>
+
+<span class="s0">[ext_resource type=&quot;Texture2D&quot; uid=&quot;uid://4siuae8sd77w&quot; path=&quot;res://Assets usefull/Main Characters/Mask Dude/Run (32x32).png&quot; id=&quot;1_h3o8e&quot;]</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_h8lml&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(0, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_u6o3i&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(32, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_8cdu0&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(64, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_kvi1h&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(96, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_3j8x7&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(128, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_fhj3b&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(160, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_0s5na&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(192, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_kcxr7&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(224, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_eseav&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(256, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_envk6&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(288, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_4s3ay&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(320, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;AtlasTexture&quot; id=&quot;AtlasTexture_nnqdm&quot;]</span>
+<span class="s0">atlas = ExtResource(&quot;1_h3o8e&quot;)</span>
+<span class="s0">region = Rect2(352, 0, 32, 32)</span>
+
+<span class="s0">[sub_resource type=&quot;SpriteFrames&quot; id=&quot;SpriteFrames_hq68p&quot;]</span>
+<span class="s0">animations = [{</span>
+<span class="s0">&quot;frames&quot;: [{</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_h8lml&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_u6o3i&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_8cdu0&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_kvi1h&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_3j8x7&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_fhj3b&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_0s5na&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_kcxr7&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_eseav&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_envk6&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_4s3ay&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: SubResource(&quot;AtlasTexture_nnqdm&quot;)</span>
+<span class="s0">}],</span>
+<span class="s0">&quot;loop&quot;: true,</span>
+<span class="s0">&quot;name&quot;: &amp;&quot;Run&quot;,</span>
+<span class="s0">&quot;speed&quot;: 10.0</span>
+<span class="s0">}]</span>
+
+<span class="s0">[sub_resource type=&quot;RectangleShape2D&quot; id=&quot;RectangleShape2D_mxgyu&quot;]</span>
+<span class="s0">size = Vector2(14.2666, 22.9144)</span>
+
+<span class="s0">[sub_resource type=&quot;SceneReplicationConfig&quot; id=&quot;SceneReplicationConfig_4dw1o&quot;]</span>
+<span class="s0">properties/0/path = NodePath(&quot;.:visibility_layer&quot;)</span>
+<span class="s0">properties/0/spawn = true</span>
+<span class="s0">properties/0/replication_mode = 1</span>
+
+<span class="s0">[node name=&quot;WalkingEnemy&quot; type=&quot;CharacterBody2D&quot;]</span>
+
+<span class="s0">[node name=&quot;AnimatedSprite2D&quot; type=&quot;AnimatedSprite2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">sprite_frames = SubResource(&quot;SpriteFrames_hq68p&quot;)</span>
+<span class="s0">animation = &amp;&quot;Run&quot;</span>
+
+<span class="s0">[node name=&quot;CollisionShape2D&quot; type=&quot;CollisionShape2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(1, 4.5)</span>
+<span class="s0">shape = SubResource(&quot;RectangleShape2D_mxgyu&quot;)</span>
+
+<span class="s0">[node name=&quot;RayCast2D&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(6, -4)</span>
+<span class="s0">target_position = Vector2(6, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D7&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-6, 16)</span>
+<span class="s0">target_position = Vector2(0, 6)</span>
+<span class="s0">hit_from_inside = true</span>
+
+<span class="s0">[node name=&quot;RayCast2D8&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(8, 16)</span>
+<span class="s0">target_position = Vector2(0, 6)</span>
+<span class="s0">hit_from_inside = true</span>
+
+<span class="s0">[node name=&quot;RayCast2D4&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-4, -4)</span>
+<span class="s0">rotation = 3.14159</span>
+<span class="s0">target_position = Vector2(6, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D5&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-4, 2)</span>
+<span class="s0">rotation = 3.14159</span>
+<span class="s0">target_position = Vector2(6, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D6&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-4, 8)</span>
+<span class="s0">rotation = 3.14159</span>
+<span class="s0">target_position = Vector2(6, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D2&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(6, 2)</span>
+<span class="s0">target_position = Vector2(6, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D3&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(6, 8)</span>
+<span class="s0">target_position = Vector2(6, 0)</span>
+
+<span class="s0">[node name=&quot;MultiplayerSynchronizer&quot; type=&quot;MultiplayerSynchronizer&quot; parent=&quot;.&quot;]</span>
+<span class="s0">replication_config = SubResource(&quot;SceneReplicationConfig_4dw1o&quot;)</span>
+</pre>
+</body>
+</html>

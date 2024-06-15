@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>RunningFrog.tscn</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d0d0d0;}
+</style>
+</head>
+<body bgcolor="#262626">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+RunningFrog.tscn</font>
+</center></td></tr></table>
+<pre><span class="s0">[gd_scene load_steps=7 format=3 uid=&quot;uid://c0josf8my3plj&quot;]</span>
+
+<span class="s0">[ext_resource type=&quot;Script&quot; path=&quot;res://Enemies/RunningFrog.cs&quot; id=&quot;1_0ewtn&quot;]</span>
+<span class="s0">[ext_resource type=&quot;Texture2D&quot; uid=&quot;uid://xar7wefunobh&quot; path=&quot;res://Assets usefull/Custom assets/Frogs/frog_walk_1.png&quot; id=&quot;2_tblnk&quot;]</span>
+<span class="s0">[ext_resource type=&quot;Texture2D&quot; uid=&quot;uid://bea2bvn0xyd8q&quot; path=&quot;res://Assets usefull/Custom assets/Frogs/frog_walk_2.png&quot; id=&quot;3_ix5w5&quot;]</span>
+
+<span class="s0">[sub_resource type=&quot;SpriteFrames&quot; id=&quot;SpriteFrames_f6kcm&quot;]</span>
+<span class="s0">animations = [{</span>
+<span class="s0">&quot;frames&quot;: [{</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: ExtResource(&quot;2_tblnk&quot;)</span>
+<span class="s0">}, {</span>
+<span class="s0">&quot;duration&quot;: 1.0,</span>
+<span class="s0">&quot;texture&quot;: ExtResource(&quot;3_ix5w5&quot;)</span>
+<span class="s0">}],</span>
+<span class="s0">&quot;loop&quot;: true,</span>
+<span class="s0">&quot;name&quot;: &amp;&quot;Run&quot;,</span>
+<span class="s0">&quot;speed&quot;: 2.0</span>
+<span class="s0">}]</span>
+
+<span class="s0">[sub_resource type=&quot;RectangleShape2D&quot; id=&quot;RectangleShape2D_m3sbd&quot;]</span>
+<span class="s0">size = Vector2(237, 366)</span>
+
+<span class="s0">[sub_resource type=&quot;RectangleShape2D&quot; id=&quot;RectangleShape2D_i171c&quot;]</span>
+<span class="s0">size = Vector2(273, 352)</span>
+
+<span class="s0">[node name=&quot;RunningFrog&quot; type=&quot;CharacterBody2D&quot; groups=[&quot;Enemy&quot;]]</span>
+<span class="s0">script = ExtResource(&quot;1_0ewtn&quot;)</span>
+
+<span class="s0">[node name=&quot;AnimatedSprite2D&quot; type=&quot;AnimatedSprite2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">sprite_frames = SubResource(&quot;SpriteFrames_f6kcm&quot;)</span>
+<span class="s0">animation = &amp;&quot;Run&quot;</span>
+<span class="s0">autoplay = &quot;Run&quot;</span>
+
+<span class="s0">[node name=&quot;CollisionShape2D&quot; type=&quot;CollisionShape2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(0, -10)</span>
+<span class="s0">shape = SubResource(&quot;RectangleShape2D_m3sbd&quot;)</span>
+
+<span class="s0">[node name=&quot;RayCast2D&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(116, -164)</span>
+<span class="s0">target_position = Vector2(19, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D2&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(114, -31)</span>
+<span class="s0">target_position = Vector2(19, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D3&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(114, 162)</span>
+<span class="s0">target_position = Vector2(19, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D4&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-114, 149)</span>
+<span class="s0">target_position = Vector2(-19, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D7&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-97, 172)</span>
+<span class="s0">target_position = Vector2(1, 18)</span>
+
+<span class="s0">[node name=&quot;RayCast2D8&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(83, 172)</span>
+<span class="s0">target_position = Vector2(1, 18)</span>
+
+<span class="s0">[node name=&quot;RayCast2D5&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-112, -28)</span>
+<span class="s0">target_position = Vector2(-19, 0)</span>
+
+<span class="s0">[node name=&quot;RayCast2D6&quot; type=&quot;RayCast2D&quot; parent=&quot;.&quot;]</span>
+<span class="s0">position = Vector2(-113, -176)</span>
+<span class="s0">target_position = Vector2(-19, 0)</span>
+
+<span class="s0">[node name=&quot;Hitboxe&quot; type=&quot;Area2D&quot; parent=&quot;.&quot;]</span>
+
+<span class="s0">[node name=&quot;CollisionShape2D&quot; type=&quot;CollisionShape2D&quot; parent=&quot;Hitboxe&quot;]</span>
+<span class="s0">position = Vector2(-9.5, -23)</span>
+<span class="s0">shape = SubResource(&quot;RectangleShape2D_i171c&quot;)</span>
+
+<span class="s0">[connection signal=&quot;body_entered&quot; from=&quot;Hitboxe&quot; to=&quot;.&quot; method=&quot;_on_hitboxe_body_entered&quot;]</span>
+</pre>
+</body>
+</html>

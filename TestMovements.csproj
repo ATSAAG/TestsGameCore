@@ -6,5 +6,6 @@
   <ItemGroup>
     <PackageReference Include="GodotCSTools" Version="1.0.0-beta9" />
     <PackageReference Include="Lavabird.SceneOnReady.Fody" Version="1.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

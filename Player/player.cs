@@ -1,5 +1,7 @@
 using System;
 using Godot;
+using GodotCSTools;
+using TestMovements;
 
 public partial class player : CharacterBody2D
 {
@@ -43,6 +45,24 @@ public partial class player : CharacterBody2D
   		camera.Enabled = true;
     		//ajoute la camera en enfant au joueur, comme ca elle bouge en mm tps que le joueur
 		AddChild(camera);
+		if (Name == "1")
+		{
+			CheckPointManager._player1 = this;
+		}
+		else
+		{
+			CheckPointManager._player2 = this;
+		}
+		
+		
+		
+		_gameSceneInstance  = GetTree().CurrentScene;
+			//GetNode("world");
+
+	
+		_gameScene = (PackedScene)ResourceLoader.Load("res://world.tscn");
+		
+		
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -403,7 +423,73 @@ public partial class player : CharacterBody2D
 			Health -= damage;
 		}
 
+		if (Health <= 0)
+		{
+			Die();
+		}
+		
+
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	 
+	private static PackedScene _gameScene = ResourceLoader.Load<PackedScene>("res://world.tscn");
+	private Node _gameSceneInstance = _gameScene.Instantiate<Node2D>();
+	public void Die()
+	{
+		GD.Print(Name + " is dead");
+	
+		//GetTree().ReloadCurrentScene();
+		//GetTree().Root.AddChild( ResourceLoader.Load<PackedScene>("res://world.tscn").Instantiate<Node2D>());
+		//this.Hide();
+		if (GetTree().GetMultiplayer().IsServer())
+		{
+			//Rpc(nameof(ResetLevel));
+		}
+		//GetTree().ReloadCurrentScene();
+		//GetTree().Root.GetChild(0).GetTree().ReloadCurrentScene();
+		//GetTree().Root.GetChild<SceneTree>(0).ReloadCurrentScene();
+		// foreach (var node in GetTree().Root.GetChildren())
+		// {
+		// 	if ( node is Node3D || node is Control)
+		// 	{
+		// 		GetTree().Root.RemoveChild(node);
+		// 		node.QueueFree();
+		// 	}
+		// }
+		// GetTree().Root.AddChild(_gameSceneInstance);
+		// QueueFree();
+
+
+
+		if (GetTree().GetMultiplayer().IsServer())
+		{
+			CheckPointManager.respawn();
+		}
+		else
+		{
+			Rpc(nameof(CheckPointManager.respawn));
+		
+		}
+		
+
+		//CheckPointManager._player1.Health = 10;
+		//CheckPointManager._player2.Health = 10;
+	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	private void ResetLevel()
+	{
+		if (_gameSceneInstance != null)
+		{
+			_gameSceneInstance.QueueFree();
+		}
+
+		_gameSceneInstance = _gameScene.Instantiate();
+		GetTree().Root.AddChild(_gameSceneInstance);
+
+		
+		_gameSceneInstance.Owner = this;
 	}
 }

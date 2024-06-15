@@ -17,7 +17,7 @@ public partial class MainMenu : Control
 		
 		//GetNode<ServeurBrowser>("ServeurBrowser").Clean();
 		var cur = GetTree().CurrentScene;
-		var scene = ResourceLoader.Load<PackedScene>("res://Server/SettingsPanel.tscn").Instantiate<Control>();
+		var scene = ResourceLoader.Load<PackedScene>("res://Server/SaveManager.tscn").Instantiate<Control>();
 		GetTree().Root.AddChild(scene);
 		cur.QueueFree();
 		GetTree().CurrentScene = scene;
