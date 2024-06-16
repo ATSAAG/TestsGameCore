@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm4o4oj0w5hls"]
+
+[ext_resource type="AudioStream" uid="uid://clesasm4jfdjb" path="res://Assets usefull/musics/Music Epic _ Powerful Orchestral - Dramatic & Atmospheric Musique Libre de Droit.mp3" id="1_wwjhb"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_wwjhb")
+autoplay = true
