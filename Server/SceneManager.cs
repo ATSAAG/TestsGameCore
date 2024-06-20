@@ -61,63 +61,63 @@ public partial class SceneManager : Node2D
 	
 	private void _on_go_to_level_2_area_entered(Area2D area)
 	{
-		CheckPointManager._player1.Position = GetNode<Area2D>("TileMap3/Pos2").Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>("TileMap3/Pos2").Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>("TileMap3/Pos2").GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>("TileMap3/Pos2").GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_level_1_area_entered(Area2D area)
 	{
 		string info = "TileMap2/Pos1";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_boss_area_entered(Area2D area)
 	{
 	
 		string info = "TileMap7/Pos10";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_level_4_area_entered(Area2D area)
 	{
 		string info = "TileMap6/Pos6";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_level_42_area_entered(Area2D area)
 	{
 		string info = "TileMap6/Pos7";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_level_5_area_entered(Area2D area)
 	{
 		string info = "TileMap5/Pos8";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_level_32_area_entered(Area2D area)
 	{
 		string info = "TileMap4/Pos5";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_demo_area_entered(Area2D area)
 	{
 		string info = "TileMap/Pos11";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_level_22_area_entered(Area2D area)
 	{
 		string info = "TileMap3/Pos3";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 	private void _on_go_to_level_3_area_entered(Area2D area)
 	{
 		string info = "TileMap4/Pos4";
-		CheckPointManager._player1.Position = GetNode<Area2D>(info).Position;
-		CheckPointManager._player2.Position = GetNode<Area2D>(info).Position.MoveToward(CheckPointManager._player1.Position,-5);
+		CheckPointManager._player1.GlobalPosition = GetNode<Area2D>(info).GlobalPosition;
+		CheckPointManager._player2.GlobalPosition = GetNode<Area2D>(info).GlobalPosition.MoveToward(CheckPointManager._player1.GlobalPosition,-5);
 	}
 
 

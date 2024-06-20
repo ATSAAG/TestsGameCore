@@ -192,6 +192,7 @@ public partial class MultiplayerLobby : Control
 		{
 			GD.Print(i.Name + " is playing");
 		}
+		//
 		var scene = ResourceLoader.Load<PackedScene>("res://world.tscn").Instantiate<Node2D>();
 		GetTree().Root.AddChild(scene);
 		this.Hide();
