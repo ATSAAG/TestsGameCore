@@ -384,15 +384,18 @@ public partial class player : CharacterBody2D
 			}
 		}
 
-		// Handle continuous animations.
-		if (Health == 10)
+		var health = Health;
+// Handle continuous animations.
+		if (health == 10)
 		{
 			_sprite.Play(animSpe);
 		}
 		else
 		{
-			//Health++;
+			health++;
 			_sprite.Play("Hit");
+			
+			
 		}
 	}
 

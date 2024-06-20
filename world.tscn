@@ -277,23 +277,23 @@ layer_0/tile_data = PackedInt32Array(721764, 65537, 0, 1114980, 1, 0, 721765, 65
 layer_1/tile_data = PackedInt32Array()
 
 [node name="GoToDemo" type="Area2D" parent="TileMap7"]
-position = Vector2(122781, 239.333)
+position = Vector2(41225.3, -611.333)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap7/GoToDemo"]
-position = Vector2(-93, -35)
+position = Vector2(-176.333, -47.9997)
 shape = SubResource("RectangleShape2D_4h4cr")
 
 [node name="Pos10" type="Area2D" parent="TileMap7"]
 position = Vector2(111249, 1932.67)
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-position = Vector2(-140.667, -259.333)
+position = Vector2(-318, 7.33336)
 
 [node name="0" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
 position = Vector2(-288.667, 96.6667)
 
 [node name="1" type="Node2D" parent="PlayerSpawn" groups=["PlayerSpawn"]]
-position = Vector2(-189.333, 79.3333)
+position = Vector2(-159.333, 79.3333)
 
 [connection signal="area_entered" from="TileMap4/GoToLevel4-2" to="." method="_on_go_to_level_42_area_entered"]
 [connection signal="area_entered" from="TileMap4/GoToLevel5" to="." method="_on_go_to_level_5_area_entered"]
