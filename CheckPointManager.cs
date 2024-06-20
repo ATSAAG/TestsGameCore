@@ -14,7 +14,8 @@ public class CheckPointManager
     {
         if (CheckPoint != null)
         {
-            MultiplayerManagment.multiplayerManagment.LoadLevel("res://world.tscn");
+            
+            //MultiplayerManagment.multiplayerManagment.LoadLevel("res://world.tscn");
 
             _player1.Position = CheckPoint.Position;
             _player2.Position = CheckPoint.Position.MoveToward(CheckPoint.Position, 10);

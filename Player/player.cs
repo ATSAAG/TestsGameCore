@@ -391,7 +391,7 @@ public partial class player : CharacterBody2D
 		}
 		else
 		{
-			Health++;
+			//Health++;
 			_sprite.Play("Hit");
 		}
 	}
