@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dyx6yf2i8q1mq" path="res://Assets usefull/Custom assets/Blocks/tile_sheet.png" id="1_jm4yn"]
 [ext_resource type="Texture2D" uid="uid://b8hq7vrbs8dsm" path="res://Assets usefull/Custom assets/Blocks/tile_sheet_grass.png" id="2_tnomw"]
-[ext_resource type="Texture2D" uid="uid://bsv5umr58k32q" path="res://Assets usefull/Custom assets/Blocks/respawn_point.png" id="3_7kxcs"]
+[ext_resource type="Texture2D" uid="uid://bdpyhew7lf372" path="res://Assets usefull/Custom assets/Blocks/respawn_point.png" id="3_7kxcs"]
 [ext_resource type="Texture2D" uid="uid://dt50fhlae08nw" path="res://Assets usefull/Terrain/Terrain (16x16).png" id="4_1q7ny"]
 [ext_resource type="Texture2D" uid="uid://v6sfngnxeyqy" path="res://Assets usefull/Custom assets/Blocks/tile_sheet_houses.png" id="5_4r73d"]
 [ext_resource type="Texture2D" uid="uid://ylpkgyw335ad" path="res://Assets usefull/Custom assets/Blocks/tile_sheet_pillar.png" id="6_bufgy"]
@@ -13,42 +13,55 @@ texture_region_size = Vector2i(128, 128)
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 3:2/0 = 0
 3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 3:1/0 = 0
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:2/0 = 0
 1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:3/0 = 0
 1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 0:3/0 = 0
 0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:3/0/physics_layer_0/angular_velocity = 0.0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 0:2/0 = 0
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgdew"]
 texture = ExtResource("2_tnomw")
@@ -329,7 +342,7 @@ sources/3 = SubResource("TileSetAtlasSource_pkhuc")
 sources/4 = SubResource("TileSetAtlasSource_rr6tw")
 sources/5 = SubResource("TileSetAtlasSource_p18mx")
 
-[node name="TileMap" type="TileMap"]
+[node name="TileMap2" type="TileMap"]
 position = Vector2(-1, 0)
 tile_set = SubResource("TileSet_rordc")
 format = 2
