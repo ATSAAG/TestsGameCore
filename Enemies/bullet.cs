@@ -20,12 +20,11 @@ public partial class bullet : GroundedEnemy
 	
 	public override void _Ready()
 	{
-		GD.Print("Missile creee, parent name: " + GetParent().GetNode("World").Name);
+		GD.Print("Missile creee");
 		_rayCasts = new RayCast2D[1];
 		_rayCasts[0] = GetNode<RayCast2D>("RayCast2D");
-		//SetAsToplevel(true);
+
 		boss_2 boss_testee = GetParent().GetNode("World").GetNode<boss_2>("boss_2");
-		GD.Print("new missile creee, boss testé" + boss_testee.Name);
 		GlobalPosition = new Vector2(boss_testee.GlobalPosition.X, boss_testee.GlobalPosition.Y - 65);
 		
 	}
@@ -37,8 +36,10 @@ public partial class bullet : GroundedEnemy
 		Vector2 velocity = Velocity;
 		velocity.X += speed * Direction * (float)delta;
 		Velocity = velocity;
+		
 		//GD.Print("missile move" + velocity);
 		MoveAndSlide();
+		
 		//CheckRaycasts();
 		
 		//GD.Print("Missile process" + Position);
@@ -49,25 +50,6 @@ public partial class bullet : GroundedEnemy
 			boss_2 boss_testee = GetParent().GetNode("World").GetNode<boss_2>("boss_2");
 			boss_testee.isMissileLaunched=false;
 		}
-	}
-
-
-	
-	
-	 public override Vector2 Move()
-	{
-		// j'ai pas de delta rien a faire ici
-		//Vector2 velocity = Velocity;
-		//velocity.X = Speed * Direction;
-		//MoveAndSlide();
-		//this.GlobalPosition += Velocity;
-		return Velocity;
-	}
-	
-
-	
-	public override void CheckRaycasts()
-	{ 
 	}
 	
 	private void _on_hitboxe_body_entered(Node2D body)
@@ -81,15 +63,27 @@ public partial class bullet : GroundedEnemy
 			QueueFree();
 			GD.Print("Missile detruite avec " +body);
 			boss_2 boss_testee = GetParent().GetNode("World").GetNode<boss_2>("boss_2");
-			GD.Print("boss_testee" + boss_testee );
+			//GD.Print("boss_testee" + boss_testee );
 			boss_testee.isMissileLaunched=false;
 		}
+	}
+	
+	
+	
 		
+	public override Vector2 Move()
+	{
+		return Velocity;
+	}
+	
+
+	
+	public override void CheckRaycasts()
+	{ 
 	}
 	
 	public override void HandleAnimations()
 	{
-		_sprite.Play("default");	
 	}
 	
 	

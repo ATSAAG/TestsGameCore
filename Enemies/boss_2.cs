@@ -10,7 +10,6 @@ public partial class boss_2 : GroundedEnemy
 	public bool isMissileLaunched = false;
 	public new bool isAttacking = false;
 	player player;
-	private Timer _missileTimer;
 	
 	public override void _Ready()
 	{
@@ -25,13 +24,6 @@ public partial class boss_2 : GroundedEnemy
 		PlayerPos.X = 0;	
 		PlayerPos.Y = 0;
 		
-		
-		 // Initialize and start the missile timer
-		//_missileTimer = GetNode<Timer>("Timer");
-		//_missileTimer.WaitTime = 2.0f; // Set your desired interval
-		//_missileTimer.Autostart = true;
-		//_missileTimer.OneShot = false; // Ensure the timer repeats
-		//_missileTimer.Start();
 				
 	}
 	public override void _PhysicsProcess(double delta)
@@ -51,8 +43,8 @@ public partial class boss_2 : GroundedEnemy
 				{
 					GD.Print("Launching missiles");
 					bullet Bullet1 = (bullet)bulletScene.Instantiate();
-					bullet Bullet2 = (bullet)bulletScene.Instantiate();
-					bullet Bullet3 = (bullet)bulletScene.Instantiate();
+					bullet Bullet2 = (bullet_2)bulletScene.Instantiate();
+					bullet Bullet3 = (bullet_3)bulletScene.Instantiate();
 					
 					Vector2 basePosition = this.GlobalPosition;
 					float spacing = 20.0f; // Space between missiles
@@ -73,22 +65,18 @@ public partial class boss_2 : GroundedEnemy
 					isMissileLaunched = true;
 					player.Health -= 5;
 				
-					//GD.Print("player.Health = " + player.Health);					
-				
+					//GD.Print("player.Health = " + player.Health);	
 				}
-
 			}
-
 		}
 		
-		
 	}
-	public override Godot.Vector2 Move()
+	
+	public override Vector2 Move()
 	{
-		Vector2 velocity = Velocity;
-		velocity.X = Speed;
-		return velocity;
+		return Velocity;
 	}
+	
 	public override void CheckRaycasts()
 	{
 		if (_rayCasts[0].IsColliding())

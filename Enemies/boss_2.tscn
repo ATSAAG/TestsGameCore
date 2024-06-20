@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ckp8i3tt2sjel"]
 
 [ext_resource type="Script" path="res://Enemies/boss_2.cs" id="1_q6lao"]
-[ext_resource type="Texture2D" uid="uid://3khoudjmmiqc" path="res://Assets usefull/Custom assets/Bosses/boss_attack_2.png" id="2_4g4so"]
+[ext_resource type="Texture2D" uid="uid://dqri0lh1vkbcf" path="res://Assets usefull/Custom assets/Bosses/boss_attack_1.png" id="2_4g4so"]
 [ext_resource type="Texture2D" uid="uid://cu64wpe1lb271" path="res://Assets usefull/Custom assets/Bosses/boss_attack_3.png" id="3_543qp"]
 [ext_resource type="Texture2D" uid="uid://bkf7rayfgcwh5" path="res://Assets usefull/Custom assets/Bosses/boss_walk_2.png" id="4_5c7pb"]
 [ext_resource type="Texture2D" uid="uid://ji1s461ri0le" path="res://Assets usefull/Custom assets/Bosses/boss_attack_charge.png" id="4_dfiy3"]
