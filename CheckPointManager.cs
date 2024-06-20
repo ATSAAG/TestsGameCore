@@ -19,9 +19,9 @@ public class CheckPointManager
 
             _player1.Position = CheckPoint.Position;
             _player2.Position = CheckPoint.Position.MoveToward(CheckPoint.Position, 10);
-            
-            
-            
+            _player1.Health = 10;
+            _player2.Health = 10;
+
         }
     }
 }
