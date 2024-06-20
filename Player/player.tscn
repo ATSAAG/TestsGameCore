@@ -108,7 +108,7 @@ size = Vector2(42.6667, 18.6667)
 size = Vector2(19.3333, 22)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 collision_layer = 3
 script = ExtResource("1_b85xb")
 
