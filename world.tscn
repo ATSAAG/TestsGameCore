@@ -144,7 +144,6 @@ position = Vector2(105703, -4891.84)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap6/GoToLevel2-2"]
 position = Vector2(395.211, 417.289)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_k2uhn")
 
 [node name="RunningFrog" parent="TileMap6" instance=ExtResource("5_dt51x")]
@@ -168,7 +167,6 @@ position = Vector2(113308, -194.113)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap6/GoToLevel3"]
 position = Vector2(-313.734, -180.168)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xjr1n")
 
 [node name="Pos6" type="Area2D" parent="TileMap6"]

@@ -498,4 +498,6 @@ public partial class player : CharacterBody2D
 		
 		_gameSceneInstance.Owner = this;
 	}
+	//192.168.1.62
+	//192.168.22.121
 }
