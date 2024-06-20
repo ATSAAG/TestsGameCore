@@ -7,6 +7,7 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yhvjo"]
 texture = ExtResource("1_cn1or")
+texture_region_size = Vector2i(128, 128)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epmlr"]
 texture = ExtResource("2_je8lb")
@@ -14,6 +15,7 @@ texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
@@ -35,9 +37,11 @@ texture_region_size = Vector2i(128, 128)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
@@ -85,7 +89,7 @@ sources/1 = SubResource("TileSetAtlasSource_epmlr")
 sources/2 = SubResource("TileSetAtlasSource_u8rub")
 sources/3 = SubResource("TileSetAtlasSource_6yll0")
 
-[node name="TileMap" type="TileMap"]
+[node name="TileMap2" type="TileMap"]
 tile_set = SubResource("TileSet_4skbq")
 format = 2
 layer_0/name = "Floor"
