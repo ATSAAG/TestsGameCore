@@ -44,7 +44,7 @@ public partial class player : CharacterBody2D
 
 		//enable la camera(je sais pas vrmt a quoi ca sert honetement, juste c obligé pr la rendre actif apres)
   		camera.Enabled = true;
-    		//ajoute la camera en enfant au joueur, comme ca elle bouge en mm tps que le joueur
+			//ajoute la camera en enfant au joueur, comme ca elle bouge en mm tps que le joueur
 		AddChild(camera);
 		if (Name == "1")
 		{
@@ -76,7 +76,7 @@ public partial class player : CharacterBody2D
 			Multiplayer.GetUniqueId())
 		{
 
-     			//rend la camera actif pr le joueur 
+	 			//rend la camera actif pr le joueur 
 			camera.MakeCurrent();
 			// Add the gravity, fast fall.
 			if (!IsOnFloor())
