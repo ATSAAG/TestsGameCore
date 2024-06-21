@@ -14,13 +14,14 @@ public class CheckPointManager
     {
         if (CheckPoint != null)
         {
-            MultiplayerManagment.multiplayerManagment.LoadLevel("res://world.tscn");
+            
+            //MultiplayerManagment.multiplayerManagment.LoadLevel("res://world.tscn");
 
-            _player1.Position = CheckPoint.Position;
-            _player2.Position = CheckPoint.Position.MoveToward(CheckPoint.Position, 10);
-            
-            
-            
+            _player1.GlobalPosition = CheckPoint.GlobalPosition;
+            _player2.GlobalPosition = CheckPoint.GlobalPosition.MoveToward(CheckPoint.GlobalPosition, 10);
+            _player1.Health = 10;
+            _player2.Health = 10;
+
         }
     }
 }

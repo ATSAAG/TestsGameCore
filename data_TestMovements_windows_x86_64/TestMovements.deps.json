@@ -13,6 +13,7 @@
           "GodotCSTools": "1.0.0-beta9",
           "GodotSharp": "4.2.1",
           "Lavabird.SceneOnReady.Fody": "1.0.0",
+          "Newtonsoft.Json": "13.0.3",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "6.0.27"
         },
         "runtime": {
@@ -884,6 +885,14 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
       }
     }
   },
@@ -932,6 +941,13 @@
       "sha512": "sha512-Qqa4/Apm45P3gUefMvyKUH3/gr+O7g2aFzMJ/i/M168oT1vIcXm8W3u4khROQ8oRJXh3rdq5N1IjwJqCGWE71g==",
       "path": "lavabird.sceneonready.fody/1.0.0",
       "hashPath": "lavabird.sceneonready.fody.1.0.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     }
   },
   "runtimes": {

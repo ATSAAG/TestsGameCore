@@ -20,6 +20,7 @@ public partial class player : CharacterBody2D
 	private CollisionShape2D _collisionShape;
 	private Area2D gunRight;
 	private Area2D gunLeft;
+	public float healt;
 
 	//Creer une camera pour ce joueur
 	public Camera2D camera =  new Camera2D();
@@ -384,15 +385,18 @@ public partial class player : CharacterBody2D
 			}
 		}
 
-		// Handle continuous animations.
-		if (Health == 10)
+		
+// Handle continuous animations.
+		if (healt == 10)
 		{
 			_sprite.Play(animSpe);
 		}
 		else
 		{
-			Health++;
+			healt++;
 			_sprite.Play("Hit");
+			
+			
 		}
 	}
 
@@ -416,11 +420,13 @@ public partial class player : CharacterBody2D
 		{
 			velocity.X = 2500;
 			Health -= damage;
+			healt = Health;
 		}
 		else
 		{
 			velocity.X = -2500;
 			Health -= damage;
+			healt = Health;
 		}
 
 		if (Health <= 0)
@@ -492,4 +498,6 @@ public partial class player : CharacterBody2D
 		
 		_gameSceneInstance.Owner = this;
 	}
+	//192.168.1.62
+	//192.168.22.121
 }
